@@ -18,13 +18,29 @@
   a { color: var(--color-accent-700); text-underline-offset: 3px; }
   a:hover { color: var(--color-accent-800); }
   .nav a[aria-current='page'] { color: var(--color-accent); }
-  @media (max-width: 620px) { .nav .navlinks { display: none; } }
+  .nav { position: relative; }
+  .navlinks { display: flex; gap: clamp(14px,2vw,28px); align-items: center; margin-right: clamp(14px,2vw,28px); }
+  .navtoggle { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .navburger { display: none; }
+  @media (max-width: 860px) {
+    .navburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; margin-right: 4px; cursor: pointer; }
+    .navburger span { display: block; width: 22px; height: 2px; background: var(--color-text); }
+    .navtoggle:checked ~ .navburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navtoggle:checked ~ .navburger span:nth-child(2) { opacity: 0; }
+    .navtoggle:checked ~ .navburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .navlinks { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; margin: 0; background: var(--color-bg); border-bottom: 2px solid var(--color-divider); }
+    .navtoggle:checked ~ .navlinks { display: flex; }
+    .navlinks a { padding: 16px clamp(20px,5vw,72px); border-top: 2px solid var(--color-divider); font-size: 16px; }
+  }
+  @media (max-width: 400px) { .nav-brand { font-size: 15px; } }
 </style>
 </helmet>
 
 <nav class="nav" style="position:sticky;top:0;z-index:30;background:var(--color-bg);padding-inline:clamp(20px,5vw,72px)">
   <a href="index.html" class="nav-brand" style="color:var(--color-text);text-decoration:none;display:flex;align-items:center;gap:10px"><img src="favicon.png" alt="" style="height:26px;width:auto;display:block" />OBM Solutions</a>
-  <span class="navlinks" style="display:flex;gap:clamp(14px,2vw,28px);align-items:center;margin-right:clamp(14px,2vw,28px)">
+  <input class="navtoggle" type="checkbox" id="navtoggle" aria-label="Menu" />
+  <label class="navburger" for="navtoggle"><span></span><span></span><span></span></label>
+  <span class="navlinks">
     <a href="services.html">Services</a>
     <a href="work.html">Work</a>
     <a href="services.html#packages">Packages</a>

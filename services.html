@@ -17,13 +17,33 @@
   a { color: var(--color-accent-700); text-underline-offset: 3px; }
   a:hover { color: var(--color-accent-800); }
   .nav a[aria-current='page'] { color: var(--color-accent); }
-  @media (max-width: 620px) { .nav .navlinks { display: none; } }
+  .nav { position: relative; }
+  .navlinks { display: flex; gap: clamp(14px,2vw,28px); align-items: center; margin-right: clamp(14px,2vw,28px); }
+  .navtoggle { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .navburger { display: none; }
+  @media (max-width: 860px) {
+    .navburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; margin-right: 4px; cursor: pointer; }
+    .navburger span { display: block; width: 22px; height: 2px; background: var(--color-text); }
+    .navtoggle:checked ~ .navburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navtoggle:checked ~ .navburger span:nth-child(2) { opacity: 0; }
+    .navtoggle:checked ~ .navburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .navlinks { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; margin: 0; background: var(--color-bg); border-bottom: 2px solid var(--color-divider); }
+    .navtoggle:checked ~ .navlinks { display: flex; }
+    .navlinks a { padding: 16px clamp(20px,5vw,72px); border-top: 2px solid var(--color-divider); font-size: 16px; }
+  }
+  @media (max-width: 400px) { .nav-brand { font-size: 15px; } }
+  @media (max-width: 700px) {
+    .svc-row { grid-template-columns: 40px minmax(0,1fr) !important; row-gap: 6px !important; }
+    .svc-row > p:nth-of-type(2) { grid-column: 2; }
+  }
 </style>
 </helmet>
 
 <nav class="nav" style="position:sticky;top:0;z-index:30;background:var(--color-bg);padding-inline:clamp(20px,5vw,72px)">
   <a href="index.html" class="nav-brand" style="color:var(--color-text);text-decoration:none;display:flex;align-items:center;gap:10px"><img src="favicon.png" alt="" style="height:26px;width:auto;display:block" />OBM Solutions</a>
-  <span class="navlinks" style="display:flex;gap:clamp(14px,2vw,28px);align-items:center;margin-right:clamp(14px,2vw,28px)">
+  <input class="navtoggle" type="checkbox" id="navtoggle" aria-label="Menu" />
+  <label class="navburger" for="navtoggle"><span></span><span></span><span></span></label>
+  <span class="navlinks">
     <a href="services.html" aria-current="page">Services</a>
     <a href="work.html">Work</a>
     <a href="services.html#packages">Packages</a>
@@ -44,25 +64,25 @@
 <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
 
 <section style="max-width:1200px;margin:0 auto;padding:56px clamp(20px,5vw,72px)">
-  <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0">
+  <div class="svc-row" style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0">
     <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">01</p>
     <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Website design and build</h2>
     <p style="font-family:var(--font-heading);font-weight:800;font-size:17px;line-height:28px;margin:0;color:var(--color-accent);white-space:nowrap">R3 500 – R30 000</p>
     <p style="grid-column:2/-1;font-size:15.5px;line-height:28px;margin:0;max-width:62ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">A new site, written and designed from scratch. We plan it around one goal — bookings, calls, orders or walk-ins — then build it fast and hand it over live, on your own domain, with your own business email.</p>
   </div>
-  <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0;border-top:2px solid var(--color-divider)">
+  <div class="svc-row" style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0;border-top:2px solid var(--color-divider)">
     <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">02</p>
     <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Redesign and refresh</h2>
     <p style="font-family:var(--font-heading);font-weight:800;font-size:17px;line-height:28px;margin:0;color:var(--color-accent);white-space:nowrap">from R3 500</p>
     <p style="grid-column:2/-1;font-size:15.5px;line-height:28px;margin:0;max-width:62ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">You have a site, it just looks like 2014 and breaks on a phone. We keep what works, rewrite the rest, and make it fast. Usually the cheapest way to get more out of what you already pay for.</p>
   </div>
-  <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0;border-top:2px solid var(--color-divider)">
+  <div class="svc-row" style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0;border-top:2px solid var(--color-divider)">
     <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">03</p>
     <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Landing pages for ads</h2>
     <p style="font-family:var(--font-heading);font-weight:800;font-size:17px;line-height:28px;margin:0;color:var(--color-accent);white-space:nowrap">from R3 500</p>
     <p style="grid-column:2/-1;font-size:15.5px;line-height:28px;margin:0;max-width:62ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">One page built for one campaign. If you are spending on Google or Meta ads, sending that traffic to your home page wastes it — a landing page with a single offer and a single form does not.</p>
   </div>
-  <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0;border-top:2px solid var(--color-divider)">
+  <div class="svc-row" style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:36px 0;border-top:2px solid var(--color-divider)">
     <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">04</p>
     <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Online shops</h2>
     <p style="font-family:var(--font-heading);font-weight:800;font-size:17px;line-height:28px;margin:0;color:var(--color-accent);white-space:nowrap">R18 000 – R30 000</p>
