@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="_ds/modernist-0d8e7b9d-8327-46db-924a-16cf83e298df/styles.css">
+<script src="_ds/modernist-0d8e7b9d-8327-46db-924a-16cf83e298df/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; text-wrap: pretty; }
+  a { color: var(--color-accent-700); text-underline-offset: 3px; }
+  a:hover { color: var(--color-accent-800); }
+  .nav a[aria-current='page'] { color: var(--color-accent); }
+  @media (max-width: 620px) { .nav .navlinks { display: none; } }
+</style>
+</helmet>
+
+<nav class="nav" style="position:sticky;top:0;z-index:30;background:var(--color-bg);padding-inline:clamp(20px,5vw,72px)">
+  <a href="index.html" class="nav-brand" style="color:var(--color-text);text-decoration:none;display:flex;align-items:center;gap:10px"><img src="favicon.png" alt="" style="height:26px;width:auto;display:block" />OBM Solutions</a>
+  <span class="navlinks" style="display:flex;gap:clamp(14px,2vw,28px);align-items:center;margin-right:clamp(14px,2vw,28px)">
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="services.html#packages">Packages</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+  </span>
+  <a class="btn btn-primary" href="https://wa.me/27793108775" style="white-space:nowrap">WhatsApp us</a>
+</nav>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,84px) clamp(20px,5vw,72px) 56px">
+  <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Contact</span>
+  <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.2vw,68px);line-height:1.06;letter-spacing:-0.02em;margin:0 0 0 -0.058em">
+    <span style="display:block">Tell us about the business.</span>
+    <span style="display:block">Quote within a day.</span>
+  </h1>
+  <p style="font-size:17px;line-height:28px;max-width:58ch;margin:34px 0 0">Six questions, two minutes — then a free demo of your site before you pay anything. If you would rather just talk, WhatsApp is fastest: we answer between 08:00 and 18:00 on weekdays.</p>
+</section>
+
+<hr style="height:2px;border:0;margin:0;background:var(--color-divider)" />
+
+<section style="max-width:1200px;margin:0 auto;padding:56px clamp(20px,5vw,72px) 84px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:56px clamp(32px,6vw,96px);align-items:start">
+
+  <form onSubmit="{{ onSubmit }}" action="https://formspree.io/f/meeyvrwl" method="POST" style="display:grid;gap:20px">
+    <input type="text" name="company_website" tabindex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
+      <div class="field">
+        <label for="obm-name">Your name</label>
+        <input class="input" id="obm-name" name="name" type="text" required="required" placeholder="Ophelia Mbeki" />
+      </div>
+      <div class="field">
+        <label for="obm-biz">Business name</label>
+        <input class="input" id="obm-biz" name="business" type="text" placeholder="Kloof Street Kitchen" />
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
+      <div class="field">
+        <label for="obm-phone">Phone or WhatsApp</label>
+        <input class="input" id="obm-phone" name="phone" type="tel" required="required" placeholder="082 000 0000" />
+      </div>
+      <div class="field">
+        <label for="obm-email">Email</label>
+        <input class="input" id="obm-email" name="email" type="email" placeholder="you@business.co.za" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="obm-need">What do you need?</label>
+      <select class="input" id="obm-need" name="need">
+        <option>A new website</option>
+        <option>A redesign of my current site</option>
+        <option>A landing page for ads</option>
+        <option>An online shop</option>
+        <option>Google Business Profile and local SEO</option>
+        <option>Social media coaching or management</option>
+        <option>Logo and branding</option>
+        <option>Not sure yet — advise me</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="obm-budget">Budget you have in mind</label>
+      <select class="input" id="obm-budget" name="budget">
+        <option>R3 500 – R6 000 (Starter)</option>
+        <option>R8 000 – R15 000 (Growth)</option>
+        <option>R18 000 – R30 000 (Premium)</option>
+        <option>Add-on or monthly plan only</option>
+        <option>Tell me what it should cost</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="obm-msg">Anything else we should know</label>
+      <textarea class="input" id="obm-msg" name="message" placeholder="Current site or Instagram, when you would like to be live, and what the site needs to do for you."></textarea>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <button type="submit" class="btn btn-primary" disabled="{{ sending }}" style="padding:12px 20px;font-size:15px">{{ buttonLabel }}</button>
+      <a class="btn btn-secondary" href="https://wa.me/27793108775" style="padding:12px 20px;font-size:15px">Or WhatsApp instead</a>
+    </div>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;padding:16px;border:2px solid var(--color-accent);font-size:15px;line-height:24px">Thank you — that is on its way. We reply within one working day. In a hurry? <a href="https://wa.me/27793108775">WhatsApp 079 310 8775</a>.</p>
+    </sc-if>
+    <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;padding:16px;border:2px solid var(--color-text);font-size:15px;line-height:24px">That did not send — the connection may have dropped. Please try again, or reach us directly on <a href="https://wa.me/27793108775">WhatsApp</a> or <a href="mailto:obmsolutions@gmail.com">obmsolutions@gmail.com</a>.</p>
+    </sc-if>
+  </form>
+
+  <aside style="display:grid;gap:32px">
+    <div>
+      <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Direct</span>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:34px;margin:0"><a href="tel:+27793108775" style="text-decoration:none">079 310 8775</a></p>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:34px;margin:0;word-break:break-word"><a href="mailto:obmsolutions@gmail.com" style="text-decoration:none">obmsolutions@gmail.com</a></p>
+    </div>
+    <div style="border-top:2px solid var(--color-divider);padding-top:28px">
+      <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Where we work</span>
+      <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">In person across Cape Town and the Peninsula — City Bowl, Southern Suburbs, Atlantic Seaboard, Northern Suburbs, the Deep South and out to Somerset West. Anywhere else in the country, we work by video call.</p>
+    </div>
+    <div style="border-top:2px solid var(--color-divider);padding-top:28px">
+      <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Hours</span>
+      <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Monday to Friday, 08:00 to 18:00. Saturday consultations by arrangement — useful if you cannot leave the shop floor during the week.</p>
+    </div>
+    <div style="border-top:2px solid var(--color-divider);padding-top:28px">
+      <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">What happens next</span>
+      <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">We reply within one working day with a fixed quote and a date. If it suits you, we book the coffee and start.</p>
+    </div>
+  </aside>
+</section>
+
+<section style="background:var(--color-accent);color:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:70px clamp(20px,5vw,72px)">
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,3.6vw,48px);line-height:1.06;letter-spacing:-0.015em;margin:0 0 0 -0.058em;color:var(--color-bg)">
+      <span style="display:block">Three founding places left.</span>
+    </h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px">
+      <a class="btn" href="work.html" style="padding:12px 20px;font-size:15px;color:var(--color-bg);border:1px solid var(--color-bg)">See what we build</a>
+    </div>
+  </div>
+</section>
+
+<footer style="max-width:1200px;margin:0 auto;padding:56px clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;font-size:14px;line-height:28px">
+  <div>
+    <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0">OBM Solutions</p>
+    <p style="margin:8px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Website design for Cape Town small businesses.</p>
+  </div>
+  <div>
+    <p style="margin:0"><a href="tel:+27793108775" style="text-decoration:none">079 310 8775</a></p>
+    <p style="margin:0"><a href="mailto:obmsolutions@gmail.com" style="text-decoration:none">obmsolutions@gmail.com</a></p>
+  </div>
+  <div style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">
+    <p style="margin:0">Cape Town and the Peninsula</p>
+    <p style="margin:0">Mon–Fri 08:00–18:00, Sat by arrangement</p>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { status: 'idle' };
+  renderVals() {
+    return {
+      sent: this.state.status === 'sent',
+      failed: this.state.status === 'error',
+      sending: this.state.status === 'sending',
+      buttonLabel: this.state.status === 'sending' ? 'Sending…' : 'Send the brief',
+      onSubmit: async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        if (form.querySelector('[name="company_website"]').value) return; // honeypot
+        this.setState({ status: 'sending' });
+        try {
+          const res = await fetch('https://formspree.io/f/meeyvrwl', {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+          if (!res.ok) throw new Error('bad status');
+          form.reset();
+          this.setState({ status: 'sent' });
+        } catch (err) {
+          this.setState({ status: 'error' });
+        }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

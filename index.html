@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="_ds/modernist-0d8e7b9d-8327-46db-924a-16cf83e298df/styles.css">
+<script src="_ds/modernist-0d8e7b9d-8327-46db-924a-16cf83e298df/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
+<style>
+  body { margin: 0; text-wrap: pretty; }
+  a { color: var(--color-accent-700); text-underline-offset: 3px; }
+  a:hover { color: var(--color-accent-800); }
+  .nav a[aria-current='page'] { color: var(--color-accent); }
+  @media (max-width: 620px) { .nav .navlinks { display: none; } }
+</style>
+</helmet>
+
+<nav class="nav" style="position:sticky;top:0;z-index:30;background:var(--color-bg);padding-inline:clamp(20px,5vw,72px)">
+  <a href="index.html" class="nav-brand" style="color:var(--color-text);text-decoration:none;display:flex;align-items:center;gap:10px"><img src="favicon.png" alt="" style="height:26px;width:auto;display:block" />OBM Solutions</a>
+  <span class="navlinks" style="display:flex;gap:clamp(14px,2vw,28px);align-items:center;margin-right:clamp(14px,2vw,28px)">
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="services.html#packages">Packages</a>
+    <a href="contact.html">Contact</a>
+  </span>
+  <a class="btn btn-primary" href="{{ ctaHref }}" style="white-space:nowrap">{{ ctaLabel }}</a>
+</nav>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(56px,9vw,112px) clamp(20px,5vw,72px) 84px">
+  <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(42px,6.2vw,84px);line-height:1.06;letter-spacing:-0.02em;margin:0 0 0 -0.058em">
+    <span style="display:block">Your next customer</span>
+    <span style="display:block">is Googling you right now.</span>
+  </h1>
+  <p style="font-size:17px;line-height:28px;max-width:58ch;margin:34px 0 0">OBM Solutions designs and builds websites for small businesses in Cape Town — restaurants, trades, clinics, salons and practices. Fast turnaround, an in-person consultation over coffee, and a free live demo of your site before you pay a cent.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+    <a class="btn btn-primary" href="{{ ctaHref }}" style="padding:12px 20px;font-size:15px">{{ ctaLabel }}</a>
+    <a class="btn btn-secondary" href="#packages" style="padding:12px 20px;font-size:15px">See packages, from R3 500</a>
+  </div>
+</section>
+
+
+<hr style="height:2px;border:0;margin:0;background:var(--color-divider)" />
+
+<sc-if value="{{ showCommitments }}" hint-placeholder-val="{{ true }}">
+<section style="max-width:1200px;margin:0 auto;padding:70px clamp(20px,5vw,72px)" aria-label="What we commit to">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:42px 28px">
+    <div>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,3.4vw,48px);line-height:56px;color:var(--color-accent);margin:0 0 0 -0.045em">7 days</p>
+      <p style="font-size:13px;line-height:18px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:10px 0 0">From brief to live site</p>
+    </div>
+    <div>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,3.4vw,48px);line-height:56px;color:var(--color-accent);margin:0 0 0 -0.045em">R0</p>
+      <p style="font-size:13px;line-height:18px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:10px 0 0">Free demo before you pay</p>
+    </div>
+    <div>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,3.4vw,48px);line-height:56px;color:var(--color-accent);margin:0 0 0 -0.045em">100%</p>
+      <p style="font-size:13px;line-height:18px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:10px 0 0">Built for the phone first</p>
+    </div>
+    <div>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,3.4vw,48px);line-height:56px;color:var(--color-accent);margin:0 0 0 -0.045em">In person</p>
+      <p style="font-size:13px;line-height:18px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:10px 0 0">We come to your business</p>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<hr style="height:2px;border:0;margin:0;background:var(--color-divider)" />
+
+<section style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px) 70px">
+  <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">What we do</span>
+
+  <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:42px 0">
+    <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">01</p>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Websites that sell, not brochures</h2>
+    <p style="grid-column:2;font-size:15.5px;line-height:28px;margin:0;max-width:52ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Three to seven pages, written and built around the one thing you want a visitor to do — call, book, order, or walk in. Clear pricing, real photos of your business, and a menu or service list that loads before the customer gives up.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:42px 0;border-top:2px solid var(--color-divider)">
+    <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">02</p>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Found on Google Maps</h2>
+    <p style="grid-column:2;font-size:15.5px;line-height:28px;margin:0;max-width:52ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Most Cape Town customers find you on a map, not a search page. We set up and clean your Google Business Profile — hours, photos, service areas, reviews — so “plumber near me” in Claremont finds you and not the guy in Durbanville.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:42px 0;border-top:2px solid var(--color-divider)">
+    <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">03</p>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Social media, handled</h2>
+    <p style="grid-column:2;font-size:15.5px;line-height:28px;margin:0;max-width:52ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Coaching if you want to run it yourself, or a monthly plan where we do. Instagram and Facebook posts that point back at your website, so the footprint you build actually leads somewhere you own.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px clamp(20px,3vw,32px);align-items:baseline;padding:42px 0;border-top:2px solid var(--color-divider)">
+    <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0;font-feature-settings:'tnum' 1">04</p>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:28px;letter-spacing:-0.01em;margin:0">Looked after, monthly</h2>
+    <p style="grid-column:2;font-size:15.5px;line-height:28px;margin:0;max-width:52ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Hosting, backups, updates and small changes on a care plan. You send a WhatsApp when the winter menu changes; we handle it. No agency ticket queue.</p>
+  </div>
+
+  <div style="border-top:2px solid var(--color-divider);padding-top:28px">
+    <a href="services.html" style="font-family:var(--font-heading);font-weight:800;font-size:15px;text-decoration:none">All services and what they cost →</a>
+  </div>
+</section>
+
+<hr style="height:2px;border:0;margin:0;background:var(--color-divider)" />
+
+<section style="max-width:1200px;margin:0 auto;padding:70px clamp(20px,5vw,72px) 84px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px clamp(24px,5vw,96px);align-items:center">
+  <div>
+    <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Why it matters</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:32px;line-height:42px;letter-spacing:-0.015em;margin:0">Nine out of ten arrive on a phone</h2>
+    <p style="font-size:15.5px;line-height:28px;margin:20px 0 0;max-width:48ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Standing outside your door, deciding. We build for that moment first: tap-to-call in the header, directions one tap away, prices where they can be read, and a page that loads on a bad Vodacom signal in Muizenberg.</p>
+  </div>
+  <figure class="grayscale" style="margin:0">
+    <image-slot id="obm-home-photo" shape="rect" placeholder="Photo of you with a client, or a Cape Town business you've worked with — prints in black and white" style="width:100%;aspect-ratio:951 / 665"></image-slot>
+  </figure>
+</section>
+
+<hr style="height:2px;border:0;margin:0;background:var(--color-divider)" />
+
+<section style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px)">
+  <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 42px">How it works</span>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));row-gap:42px;margin-left:-2px">
+    <div style="padding:28px;border-left:2px solid var(--color-divider)">
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0 0 14px;color:var(--color-accent)">01</p>
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:26px;margin:0">Free demo</h3>
+      <p style="font-size:15px;line-height:28px;margin:14px 0 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">We meet — anywhere from Table View to Somerset West — then build a live preview of your site so you can see the vision first. No commitment, no cost.</p>
+    </div>
+    <div style="padding:28px;border-left:2px solid var(--color-divider)">
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0 0 14px;color:var(--color-accent)">02</p>
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:26px;margin:0">Approve and deposit</h3>
+      <p style="font-size:15px;line-height:28px;margin:14px 0 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Happy with the demo? A 50% deposit secures your spot and starts the build. Three rounds of changes are included from here.</p>
+    </div>
+    <div style="padding:28px;border-left:2px solid var(--color-divider)">
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0 0 14px;color:var(--color-accent)">03</p>
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:26px;margin:0">Build and refine</h3>
+      <p style="font-size:15px;line-height:28px;margin:14px 0 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">We develop the full site with your content, your photographs and your feedback — domain, business email, Google Business Profile and WhatsApp button included.</p>
+    </div>
+    <div style="padding:28px;border-left:2px solid var(--color-divider)">
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:28px;margin:0 0 14px;color:var(--color-accent)">04</p>
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:26px;margin:0">Launch</h3>
+      <p style="font-size:15px;line-height:28px;margin:14px 0 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Final balance settled, the site goes live and you are online. Then a monthly care plan if you want one, or take the keys and run it yourself.</p>
+    </div>
+  </div>
+</section>
+
+<hr style="height:2px;border:0;margin:0;background:var(--color-divider)" />
+
+<section id="packages" style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px)">
+  <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Packages</span>
+  <h2 style="font-family:var(--font-heading);font-weight:800;font-size:32px;line-height:42px;letter-spacing:-0.015em;margin:0 0 42px">Three packages. Every one starts with a free demo.</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));row-gap:42px;margin-left:-2px">
+    <div style="padding:32px;border-left:2px solid var(--color-divider)">
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:26px;margin:0">Starter</h3>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:34px;line-height:44px;color:var(--color-accent);margin:14px 0 0">R3 500 – R6 000</p>
+      <p style="font-size:15px;line-height:28px;margin:14px 0 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Three to five pages for a new business that needs a simple, professional presence.</p>
+    </div>
+    <div style="padding:32px;border-left:2px solid var(--color-divider)">
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:26px;margin:0">Growth</h3>
+      <span style="display:block;font-size:11px;line-height:14px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-700);margin:8px 0 0">Most popular</span>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:34px;line-height:44px;color:var(--color-accent);margin:14px 0 0">R8 000 – R15 000</p>
+      <p style="font-size:15px;line-height:28px;margin:14px 0 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Up to ten pages, Google Maps, a blog and a gallery, for reach and visibility.</p>
+    </div>
+    <div style="padding:32px;border-left:2px solid var(--color-divider)">
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:26px;margin:0">Premium</h3>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:34px;line-height:44px;color:var(--color-accent);margin:14px 0 0">R18 000 – R30 000</p>
+      <p style="font-size:15px;line-height:28px;margin:14px 0 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">A store, online bookings and a fully custom design, for businesses ready to scale.</p>
+    </div>
+  </div>
+  <p style="font-size:15px;line-height:28px;margin:42px 0 0;max-width:58ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Every package begins with a free demo of your site before you pay anything. <a href="services.html#packages">Compare what is included</a>, or browse <a href="services.html#addons">add-ons and monthly care plans</a>.</p>
+</section>
+
+<sc-if value="{{ showFoundingOffer }}" hint-placeholder-val="{{ true }}">
+<section style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 84px">
+  <div style="border:2px solid var(--color-accent);padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:center">
+    <div>
+      <span class="tag tag-outline" style="margin-bottom:14px">Founding clients — 3 places</span>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(24px,2.6vw,32px);line-height:1.15;letter-spacing:-0.015em;margin:14px 0 0">We are new. That is your discount.</h2>
+      <p style="font-size:15.5px;line-height:28px;margin:14px 0 0;max-width:56ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Our first three Cape Town clients get 25% off any package, in exchange for photographs of the finished work and an honest review. Same care, same fixed price, first in the queue.</p>
+    </div>
+    <a class="btn btn-primary" href="{{ ctaHref }}" style="padding:12px 20px;font-size:15px;white-space:nowrap;justify-self:start;justify-content:flex-start">{{ ctaLabel }}</a>
+  </div>
+</section>
+</sc-if>
+
+<section style="background:var(--color-accent);color:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px)">
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.06;letter-spacing:-0.015em;margin:0 0 0 -0.058em;color:var(--color-bg)">
+      <span style="display:block">Let's get you found.</span>
+    </h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:42px">
+      <a class="btn" href="https://wa.me/27793108775" style="padding:12px 20px;font-size:15px;color:var(--color-bg);border:1px solid var(--color-bg)">WhatsApp 079 310 8775</a>
+      <a class="btn" href="contact.html" style="padding:12px 20px;font-size:15px;color:var(--color-bg);border:1px solid var(--color-bg)">Request a quote</a>
+    </div>
+  </div>
+</section>
+
+<footer style="max-width:1200px;margin:0 auto;padding:56px clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;font-size:14px;line-height:28px">
+  <div>
+    <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0">OBM Solutions</p>
+    <p style="margin:8px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Website design for Cape Town small businesses.</p>
+  </div>
+  <div>
+    <p style="margin:0"><a href="tel:+27793108775" style="text-decoration:none">079 310 8775</a></p>
+    <p style="margin:0"><a href="mailto:obmsolutions@gmail.com" style="text-decoration:none">obmsolutions@gmail.com</a></p>
+  </div>
+  <div style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">
+    <p style="margin:0">Cape Town and the Peninsula</p>
+    <p style="margin:0">Mon–Fri 08:00–18:00, Sat by arrangement</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;WhatsApp&quot;,&quot;Call&quot;,&quot;Quote form&quot;],&quot;default&quot;:&quot;WhatsApp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Conversion&quot;},&quot;showCommitments&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFoundingOffer&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const style = this.props.ctaStyle ?? 'WhatsApp';
+    const map = {
+      'WhatsApp': { label: 'WhatsApp us', href: 'https://wa.me/27793108775' },
+      'Call': { label: 'Call 079 310 8775', href: 'tel:+27793108775' },
+      'Quote form': { label: 'Get a quote', href: 'contact.html' }
+    };
+    const cta = map[style] || map['WhatsApp'];
+    return {
+      ctaLabel: cta.label,
+      ctaHref: cta.href,
+      showCommitments: this.props.showCommitments ?? true,
+      showFoundingOffer: this.props.showFoundingOffer ?? true
+    };
+  }
+}
+
+</script>
+</body>
+</html>
