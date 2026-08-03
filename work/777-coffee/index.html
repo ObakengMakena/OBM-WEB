@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 777 Coffee Shop</title>
+
+    <!-- Self-hosted Font Awesome + fonts (Inter + Playfair Display) -->
+    <link rel="stylesheet" href="../_assets/fa/css/all.min.css" />
+    <link rel="stylesheet" href="../_assets/fonts/fonts.css" />
+
+    <style>
+        /* ── custom theme ── */
+        :root {
+            --brown-900: #2c1810;
+            --brown-800: #3d2317;
+            --brown-700: #5a3424;
+            --brown-600: #7a4a34;
+            --brown-400: #b8957a;
+            --brown-200: #dcc9b8;
+            --brown-100: #f0e6dc;
+            --cream: #fcf7f2;
+            --gold: #c9a87c;
+            --gold-light: #e8d5b5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--brown-900);
+            line-height: 1.6;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ── scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--brown-100);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--brown-600);
+            border-radius: 12px;
+        }
+
+        /* ── glass / cards ── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card-shadow {
+            box-shadow: 0 12px 40px -12px rgba(44, 24, 16, 0.12);
+        }
+
+        /* ── boarding pass style ── */
+        .boarding-tag {
+            display: inline-block;
+            background: var(--brown-900);
+            color: var(--gold-light);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+        }
+
+        .gate-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--brown-900);
+            color: var(--gold-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            padding: 0.3rem 1.2rem 0.3rem 1rem;
+            border-radius: 30px;
+            border: 1px solid var(--gold);
+            text-transform: uppercase;
+        }
+
+        /* ── runway divider ── */
+        .runway-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .runway-divider::before,
+        .runway-divider::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--brown-400), transparent);
+        }
+        .runway-divider i {
+            color: var(--brown-400);
+            font-size: 1.2rem;
+        }
+
+        /* ── menu grid ── */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed rgba(44, 24, 16, 0.08);
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item .name {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .menu-item .price {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--brown-700);
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        .menu-item .sub {
+            font-size: 0.75rem;
+            color: var(--brown-600);
+            font-weight: 400;
+            margin-left: 0.3rem;
+        }
+
+        /* ── product card ── */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 16px rgba(44, 24, 16, 0.06);
+            border: 1px solid rgba(44, 24, 16, 0.04);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px -12px rgba(44, 24, 16, 0.18);
+        }
+        .product-card .tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--brown-900);
+            color: var(--gold-light);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+        }
+
+        /* ── hero overlay ── */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(44, 24, 16, 0.75) 0%, rgba(44, 24, 16, 0.30) 80%);
+        }
+
+        /* ── buttons ── */
+        .btn-primary {
+            background: var(--brown-900);
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid var(--brown-900);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .btn-primary:hover {
+            background: var(--brown-700);
+            border-color: var(--brown-700);
+            transform: scale(1.02);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--brown-900);
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1.5px solid var(--brown-900);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .btn-outline:hover {
+            background: var(--brown-900);
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+        /* ── responsive tweaks ── */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.8rem !important;
+            }
+            .section-title {
+                font-size: 2rem !important;
+            }
+        }
+
+        /* ── animation ── */
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* smooth hover for social icons */
+        .social-icon {
+            transition: all 0.2s ease;
+            color: var(--brown-600);
+        }
+        .social-icon:hover {
+            color: var(--brown-900);
+            transform: scale(1.1);
+        }
+
+        /* boarding pass divider */
+        .boarding-divider {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--brown-400);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .boarding-divider .line {
+            flex: 1;
+            height: 1px;
+            background: var(--brown-200);
+        }
+
+        /* OBM portfolio ribbon */
+        .obm-ribbon {
+            background: #2c1810;
+            color: #e8d5b5;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #c9a87c;
+        }
+        .obm-ribbon a { color: #c9a87c; font-weight: 600; text-decoration: none; }
+        .obm-ribbon a:hover { color: #fff; }
+    </style>
+    <!-- Self-hosted compiled Tailwind — loaded after inline styles so utility overrides win (matches Play CDN order) -->
+    <link rel="stylesheet" href="tailwind.css" />
+</head>
+
+<body>
+
+    <!-- OBM portfolio ribbon -->
+    <div class="obm-ribbon">Preview built by OBM&nbsp;Solutions — a coffee-shop site. <a href="../../work.html">← Back to portfolio</a></div>
+
+    <!-- ============================================================
+    NAVIGATION
+    ============================================================ -->
+    <header class="sticky top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-[#e8ddd2]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2.5">
+                    <span class="text-2xl font-bold font-display text-[#2c1810] tracking-tight">777</span>
+                    <span class="hidden sm:inline text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#7a4a34] border-l border-[#dcc9b8] pl-3">Coffee Shop</span>
+                </a>
+
+                <!-- Desktop nav -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#3d2317]">
+                    <a href="#about" class="hover:text-[#7a4a34] transition">About</a>
+                    <a href="#hours" class="hover:text-[#7a4a34] transition">Hours</a>
+                    <a href="#menu" class="hover:text-[#7a4a34] transition">Menu</a>
+                    <a href="#products" class="hover:text-[#7a4a34] transition">Shop</a>
+                    <a href="#contact" class="hover:text-[#7a4a34] transition">Contact</a>
+                </nav>
+
+                <!-- CTA + Mobile toggle -->
+                <div class="flex items-center gap-3">
+                    <a href="#contact" class="hidden sm:inline-block btn-primary text-sm py-2 px-5">Boarding Pass</a>
+                    <button id="mobile-menu-btn" class="md:hidden text-[#2c1810] text-xl focus:outline-none" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile nav -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-[#e8ddd2] px-4 py-5">
+            <nav class="flex flex-col gap-3 text-sm font-medium text-[#3d2317]">
+                <a href="#about" class="py-2 hover:text-[#7a4a34] transition border-b border-[#f0e6dc]">About</a>
+                <a href="#hours" class="py-2 hover:text-[#7a4a34] transition border-b border-[#f0e6dc]">Hours</a>
+                <a href="#menu" class="py-2 hover:text-[#7a4a34] transition border-b border-[#f0e6dc]">Menu</a>
+                <a href="#products" class="py-2 hover:text-[#7a4a34] transition border-b border-[#f0e6dc]">Shop</a>
+                <a href="#contact" class="py-2 hover:text-[#7a4a34] transition">Contact</a>
+                <a href="#contact" class="mt-2 btn-primary text-center text-sm py-2.5">Boarding Pass</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-[#2c1810]">
+        <!-- Background image placeholder -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1600&q=80')] bg-cover bg-center opacity-40"></div>
+        <div class="absolute inset-0 hero-overlay"></div>
+
+        <!-- boarding gate decor -->
+        <div class="absolute top-24 right-8 md:right-16 hidden md:block">
+            <div class="gate-badge">
+                <i class="fas fa-plane-departure text-[#c9a87c]"></i>
+                BOARDING GATE B2
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-white">
+            <div class="max-w-2xl">
+                <!-- small tag -->
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="boarding-tag">✈︎ Est. 2025</span>
+                    <span class="text-[0.65rem] uppercase tracking-[0.15em] text-[#dcc9b8]">Cape Town</span>
+                </div>
+
+                <h1 class="hero-title font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+                    Fuel Up<br />
+                    <span class="text-[#c9a87c]">At The 777</span>
+                </h1>
+
+                <p class="mt-5 text-base sm:text-lg text-[#dcc9b8] max-w-md leading-relaxed">
+                    Specialty coffee &amp; pastries in the heart of the Mother City.
+                    Where every cup is a journey.
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a href="#menu" class="btn-primary bg-[#c9a87c] border-[#c9a87c] text-[#2c1810] hover:bg-[#b8957a] hover:border-[#b8957a]">
+                        <i class="fas fa-mug-saucer"></i> Explore Menu
+                    </a>
+                    <a href="#products" class="btn-outline border-white text-white hover:bg-white hover:text-[#2c1810]">
+                        <i class="fas fa-store"></i> Shop Beans
+                    </a>
+                </div>
+
+                <!-- runway stats -->
+                <div class="mt-12 flex items-center gap-8 text-sm">
+                    <div>
+                        <span class="block text-2xl font-bold text-[#c9a87c]">7</span>
+                        <span class="text-[0.65rem] uppercase tracking-[0.1em] text-[#b8957a]">Single Origins</span>
+                    </div>
+                    <div class="w-px h-8 bg-[#5a3424]"></div>
+                    <div>
+                        <span class="block text-2xl font-bold text-[#c9a87c]">6:30</span>
+                        <span class="text-[0.65rem] uppercase tracking-[0.1em] text-[#b8957a]">AM – 9:30 PM</span>
+                    </div>
+                    <div class="w-px h-8 bg-[#5a3424]"></div>
+                    <div>
+                        <span class="block text-2xl font-bold text-[#c9a87c]">100%</span>
+                        <span class="text-[0.65rem] uppercase tracking-[0.1em] text-[#b8957a]">Halal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- scroll indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest uppercase flex flex-col items-center gap-1 animate-bounce">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down text-[0.6rem]"></i>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section id="about" class="py-16 md:py-24 bg-[#fcf7f2]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- left: text -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="boarding-tag bg-[#2c1810] text-[#f0e6dc]">About Us</span>
+                        <span class="text-[0.6rem] uppercase tracking-[0.15em] text-[#7a4a34]">@66 Keerom Street</span>
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#2c1810] leading-[1.1]">
+                        Where Aviation<br />
+                        <span class="text-[#7a4a34]">Meets Coffee</span>
+                    </h2>
+                    <div class="runway-divider !justify-start !m-0 !mt-4 !mb-5">
+                        <span class="w-12 h-0.5 bg-[#b8957a]"></span>
+                        <i class="fas fa-plane text-[#b8957a] text-sm"></i>
+                        <span class="w-12 h-0.5 bg-[#b8957a]"></span>
+                    </div>
+                    <p class="text-[#3d2317] leading-relaxed max-w-lg">
+                        Welcome to <strong>The 777 Coffee Shop</strong>, where a love for aviation takes flight in every cup.
+                        Our name was inspired by the owner's passion for the iconic Boeing 777 — a symbol of travel,
+                        adventure, and connection.
+                    </p>
+                    <p class="mt-4 text-[#5a3424] leading-relaxed max-w-lg">
+                        Using carefully sourced single-origin coffee beans, each brew is made to highlight the unique
+                        flavors and stories behind every origin. From rich, bold espressos to smooth, aromatic pours,
+                        our coffee is designed to delight enthusiasts and casual drinkers alike.
+                    </p>
+                    <p class="mt-4 text-[#5a3424] leading-relaxed max-w-lg">
+                        More than just a coffee shop, The 777 is a destination — a space where community, creativity,
+                        and a spirit of exploration come together.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <span class="inline-flex items-center gap-2 bg-[#e8ddd2] text-[#2c1810] text-xs font-medium px-4 py-1.5 rounded-full">
+                            <i class="fas fa-check-circle text-[#7a4a34]"></i> Single Origin
+                        </span>
+                        <span class="inline-flex items-center gap-2 bg-[#e8ddd2] text-[#2c1810] text-xs font-medium px-4 py-1.5 rounded-full">
+                            <i class="fas fa-check-circle text-[#7a4a34]"></i> Specialty Roast
+                        </span>
+                        <span class="inline-flex items-center gap-2 bg-[#e8ddd2] text-[#2c1810] text-xs font-medium px-4 py-1.5 rounded-full">
+                            <i class="fas fa-check-circle text-[#7a4a34]"></i> Halal Certified
+                        </span>
+                    </div>
+                </div>
+
+                <!-- right: image collage -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="col-span-2 rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Coffee shop interior" class="w-full h-48 sm:h-56 object-cover" />
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="Pour over coffee" class="w-full h-40 object-cover" />
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?w=600&q=80" alt="Coffee beans" class="w-full h-40 object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    TRADING HOURS
+    ============================================================ -->
+    <section id="hours" class="py-16 md:py-20 bg-[#2c1810] text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="boarding-tag bg-[#c9a87c] text-[#2c1810] border-[#c9a87c]">Trading Hours</span>
+                <span class="text-[0.6rem] uppercase tracking-[0.15em] text-[#b8957a]">@66 Keerom Street</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0e6dc]">
+                Open Every Day
+            </h2>
+            <p class="text-[#b8957a] mt-2 text-sm tracking-widest uppercase">6:30 AM — 9:30 PM</p>
+
+            <div class="runway-divider !text-[#5a3424]">
+                <i class="fas fa-plane"></i>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto mt-6">
+                <div class="flex justify-between border-b border-[#5a3424] py-3 text-sm">
+                    <span class="font-medium">Monday</span>
+                    <span class="text-[#dcc9b8]">6:30AM – 9:30PM</span>
+                </div>
+                <div class="flex justify-between border-b border-[#5a3424] py-3 text-sm">
+                    <span class="font-medium">Tuesday</span>
+                    <span class="text-[#dcc9b8]">6:30AM – 9:30PM</span>
+                </div>
+                <div class="flex justify-between border-b border-[#5a3424] py-3 text-sm">
+                    <span class="font-medium">Wednesday</span>
+                    <span class="text-[#dcc9b8]">6:30AM – 9:30PM</span>
+                </div>
+                <div class="flex justify-between border-b border-[#5a3424] py-3 text-sm">
+                    <span class="font-medium">Thursday</span>
+                    <span class="text-[#dcc9b8]">6:30AM – 9:30PM</span>
+                </div>
+                <div class="flex justify-between border-b border-[#5a3424] py-3 text-sm">
+                    <span class="font-medium">Friday</span>
+                    <span class="text-[#dcc9b8]">6:30AM – 9:30PM</span>
+                </div>
+                <div class="flex justify-between border-b border-[#5a3424] py-3 text-sm">
+                    <span class="font-medium">Saturday</span>
+                    <span class="text-[#dcc9b8]">6:30AM – 9:30PM</span>
+                </div>
+                <div class="flex justify-between border-b border-[#5a3424] py-3 text-sm sm:col-span-2">
+                    <span class="font-medium">Sunday</span>
+                    <span class="text-[#dcc9b8]">6:30AM – 9:30PM</span>
+                </div>
+            </div>
+
+            <div class="mt-6 inline-block bg-[#3d2317] px-5 py-2 rounded-full text-xs text-[#dcc9b8] tracking-wide">
+                <i class="fas fa-clock mr-2 text-[#c9a87c]"></i>
+                Same hours on public holidays
+            </div>
+
+            <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-[#b8957a]">
+                <span><i class="fab fa-instagram mr-2 text-[#c9a87c]"></i> @the777coffeeshop</span>
+                <span><i class="fas fa-phone-alt mr-2 text-[#c9a87c]"></i> +27 65 593 6130</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    MENU
+    ============================================================ -->
+    <section id="menu" class="py-16 md:py-24 bg-[#fcf7f2]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center gap-3 mb-3">
+                    <span class="boarding-tag bg-[#2c1810] text-[#f0e6dc]">Menu</span>
+                    <span class="text-[0.6rem] uppercase tracking-[0.15em] text-[#7a4a34]">@66 Keerom Street</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#2c1810]">
+                    Our <span class="text-[#7a4a34]">Brews &amp; Bites</span>
+                </h2>
+                <p class="text-[#5a3424] mt-2 max-w-md mx-auto text-sm">
+                    Carefully crafted for the discerning traveller.
+                </p>
+            </div>
+
+            <!-- tabs / grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- DRINKS -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-[#f0e6dc]">
+                    <div class="flex items-center gap-3 mb-5">
+                        <i class="fas fa-mug-hot text-2xl text-[#7a4a34]"></i>
+                        <h3 class="font-display text-xl font-bold text-[#2c1810]">Drinks</h3>
+                    </div>
+                    <div class="space-y-0.5">
+                        <div class="menu-item"><span class="name">V60</span><span class="price">R55 <span class="sub">HB</span> / R76 <span class="sub">SO</span></span></div>
+                        <div class="menu-item"><span class="name">Espresso</span><span class="price">R40 <span class="sub">HB</span> / R46 <span class="sub">SO</span></span></div>
+                        <div class="menu-item"><span class="name">Americano / Long Black</span><span class="price">R40 / R46</span></div>
+                        <div class="menu-item"><span class="name">Macchiato</span><span class="price">R44 / R52</span></div>
+                        <div class="menu-item"><span class="name">Cortado</span><span class="price">R44 / R50</span></div>
+                        <div class="menu-item"><span class="name">Flat White</span><span class="price">R43 / R52</span></div>
+                        <div class="menu-item"><span class="name">Latte</span><span class="price">R42 / R46</span></div>
+                        <div class="menu-item"><span class="name">Mocha</span><span class="price">R52</span></div>
+                        <div class="menu-item"><span class="name">Hot Chocolate</span><span class="price">R52</span></div>
+                    </div>
+                    <div class="mt-4 text-[0.6rem] uppercase tracking-wider text-[#7a4a34] border-t border-[#f0e6dc] pt-3">
+                        <span class="font-semibold">HB</span> Houseblend &nbsp;·&nbsp; <span class="font-semibold">SO</span> Single Origin
+                    </div>
+                </div>
+
+                <!-- SWEET TREATS & LIGHT MEALS -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-[#f0e6dc]">
+                    <div class="flex items-center gap-3 mb-5">
+                        <i class="fas fa-cake-candles text-2xl text-[#7a4a34]"></i>
+                        <h3 class="font-display text-xl font-bold text-[#2c1810]">Sweet &amp; Savoury</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#7a4a34]">Desserts</h4>
+                            <div class="menu-item"><span class="name">The 777 Tiramisu</span><span class="price">R65</span></div>
+                            <div class="menu-item"><span class="name">Tira-Latte</span><span class="price">R70</span></div>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#7a4a34]">Croissants</h4>
+                            <div class="menu-item"><span class="name">French · Round</span><span class="price text-[#7a4a34]">Classic / Almond / Chocolate</span></div>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#7a4a34]">Sandwiches <span class="font-normal text-[0.55rem]">(sourdough)</span></h4>
+                            <div class="menu-item"><span class="name">Spicy Tuna</span><span class="price">R68</span></div>
+                            <div class="menu-item"><span class="name">Chicken Mayo</span><span class="price">R66</span></div>
+                            <div class="menu-item"><span class="name">The 777 Burrata</span><span class="price">R70</span></div>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#7a4a34]">Bagels <span class="font-normal text-[0.55rem]">(based on stock)</span></h4>
+                            <p class="text-[0.75rem] text-[#5a3424] italic">Please state allergies</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SPECIALTY + ADD-ONS -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-[#f0e6dc]">
+                    <div class="flex items-center gap-3 mb-5">
+                        <i class="fas fa-star text-2xl text-[#c9a87c]"></i>
+                        <h3 class="font-display text-xl font-bold text-[#2c1810]">Specialty &amp; Add-ons</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#7a4a34]">Our Specialty</h4>
+                            <div class="menu-item"><span class="name">Cold Brew</span><span class="price">R64</span></div>
+                            <div class="menu-item"><span class="name">Matcha</span><span class="price">R74</span></div>
+                            <div class="menu-item"><span class="name">Cuppalino</span><span class="price">R85</span></div>
+                            <div class="menu-item"><span class="name">Spanish Latte</span><span class="price">R50</span></div>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#7a4a34]">Single Origins</h4>
+                            <div class="flex flex-wrap gap-2 mt-1">
+                                <span class="text-sm bg-[#f0e6dc] px-3 py-1 rounded-full text-[#2c1810]">Kenya</span>
+                                <span class="text-sm bg-[#f0e6dc] px-3 py-1 rounded-full text-[#2c1810]">Colombia</span>
+                                <span class="text-sm bg-[#f0e6dc] px-3 py-1 rounded-full text-[#2c1810]">Ethiopia</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#7a4a34]">Build a Meal / Add-ons</h4>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-0.5 text-sm mt-1">
+                                <span class="text-[#3d2317]">Rocket / Basil <span class="float-right text-[#7a4a34]">R5</span></span>
+                                <span class="text-[#3d2317]">Tomato <span class="float-right text-[#7a4a34]">R7</span></span>
+                                <span class="text-[#3d2317]">Caramelised Onions <span class="float-right text-[#7a4a34]">R10</span></span>
+                                <span class="text-[#3d2317]">Sourdough slice <span class="float-right text-[#7a4a34]">R10</span></span>
+                                <span class="text-[#3d2317]">Egg <span class="float-right text-[#7a4a34]">R10</span></span>
+                                <span class="text-[#3d2317]">Avo <span class="float-right text-[#7a4a34]">R15</span></span>
+                                <span class="text-[#3d2317]">Cream Cheese <span class="float-right text-[#7a4a34]">R18</span></span>
+                                <span class="text-[#3d2317]">Cheddar Cheese <span class="float-right text-[#7a4a34]">R20</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-[0.6rem] uppercase tracking-wider text-[#7a4a34] border-t border-[#f0e6dc] pt-3 text-center">
+                        <i class="fas fa-check-circle mr-1 text-[#7a4a34]"></i> We are fully Halal
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10 text-sm text-[#5a3424] border-t border-[#e8ddd2] pt-6 max-w-md mx-auto">
+                <i class="fas fa-info-circle mr-2 text-[#b8957a]"></i>
+                All stock based on availability in store.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PRODUCTS / E‑COMMERCE (Coffee Packets)
+    ============================================================ -->
+    <section id="products" class="py-16 md:py-24 bg-[#f0e6dc]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center gap-3 mb-3">
+                    <span class="boarding-tag bg-[#2c1810] text-[#f0e6dc]">Shop</span>
+                    <span class="text-[0.6rem] uppercase tracking-[0.15em] text-[#5a3424]">Limited Edition</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#2c1810]">
+                    Premium <span class="text-[#7a4a34]">Coffee Packets</span>
+                </h2>
+                <p class="text-[#5a3424] mt-2 max-w-md mx-auto text-sm">
+                    Sourced from the world's most exclusive high-altitude farms.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Product 1 -->
+                <div class="product-card relative">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80" alt="Ethiopia Guji coffee" class="w-full h-56 object-cover" />
+                        <span class="tag">Limited</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h4 class="font-display text-lg font-bold text-[#2c1810]">Ethiopia Guji</h4>
+                                <p class="text-xs text-[#7a4a34] uppercase tracking-wider">Natural · Gr.3</p>
+                            </div>
+                            <span class="text-sm font-bold text-[#2c1810]">R229</span>
+                        </div>
+                        <p class="text-sm text-[#5a3424] mt-2 leading-relaxed">
+                            Varieties, Local Landscapes · 1,850 – 2,000m
+                        </p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-[#7a4a34]">
+                            <i class="fas fa-mountain"></i> High altitude
+                            <span class="w-px h-4 bg-[#dcc9b8]"></span>
+                            <i class="fas fa-leaf"></i> Washed
+                        </div>
+                        <button class="mt-4 w-full btn-primary !bg-[#2c1810] !border-[#2c1810] text-sm py-2.5 justify-center">
+                            <i class="fas fa-shopping-bag"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card relative">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=80" alt="Kenya coffee" class="w-full h-56 object-cover" />
+                        <span class="tag">Quality Pro</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h4 class="font-display text-lg font-bold text-[#2c1810]">Kenya</h4>
+                                <p class="text-xs text-[#7a4a34] uppercase tracking-wider">Washed · S229-S314</p>
+                            </div>
+                            <span class="text-sm font-bold text-[#2c1810]">R249</span>
+                        </div>
+                        <p class="text-sm text-[#5a3424] mt-2 leading-relaxed">
+                            Ruiru 11 · Batian · Central Highlands
+                        </p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-[#7a4a34]">
+                            <i class="fas fa-trophy"></i> Quality Pro Series
+                            <span class="w-px h-4 bg-[#dcc9b8]"></span>
+                            <i class="fas fa-water"></i> Washed
+                        </div>
+                        <button class="mt-4 w-full btn-primary !bg-[#2c1810] !border-[#2c1810] text-sm py-2.5 justify-center">
+                            <i class="fas fa-shopping-bag"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card relative">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1535852006272-095e5d8b82b7?w=600&q=80" alt="Colombia coffee" class="w-full h-56 object-cover" />
+                        <span class="tag">New Arrival</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h4 class="font-display text-lg font-bold text-[#2c1810]">Colombia</h4>
+                                <p class="text-xs text-[#7a4a34] uppercase tracking-wider">Washed · Excelso</p>
+                            </div>
+                            <span class="text-sm font-bold text-[#2c1810]">R239</span>
+                        </div>
+                        <p class="text-sm text-[#5a3424] mt-2 leading-relaxed">
+                            Supremo · 1,600 – 1,900m · Huila region
+                        </p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-[#7a4a34]">
+                            <i class="fas fa-seedling"></i> Single Origin
+                            <span class="w-px h-4 bg-[#dcc9b8]"></span>
+                            <i class="fas fa-fire"></i> Medium Roast
+                        </div>
+                        <button class="mt-4 w-full btn-primary !bg-[#2c1810] !border-[#2c1810] text-sm py-2.5 justify-center">
+                            <i class="fas fa-shopping-bag"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="#" class="btn-outline text-sm">
+                    View All Packets <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    SOCIAL / COMMUNITY HIGHLIGHT
+    ============================================================ -->
+    <section class="py-16 md:py-20 bg-[#fcf7f2]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <div class="flex items-center justify-center gap-3 mb-3">
+                    <span class="boarding-tag bg-[#2c1810] text-[#f0e6dc]">Community</span>
+                    <span class="text-[0.6rem] uppercase tracking-[0.15em] text-[#7a4a34]">#the777coffeeshop</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#2c1810]">
+                    Our <span class="text-[#7a4a34]">Crew</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square">
+                    <img src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?w=400&q=80" alt="Community" class="w-full h-full object-cover" />
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="Coffee" class="w-full h-full object-cover" />
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&q=80" alt="Shop interior" class="w-full h-full object-cover" />
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square">
+                    <img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?w=400&q=80" alt="Beans" class="w-full h-full object-cover" />
+                </div>
+            </div>
+
+            <!-- instagram feed teaser -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-[#3d2317]">
+                <a href="#" class="flex items-center gap-2 social-icon">
+                    <i class="fab fa-instagram text-xl"></i> @the777coffeeshop
+                </a>
+                <a href="#" class="flex items-center gap-2 social-icon">
+                    <i class="fab fa-facebook text-xl"></i> The 777 Coffee
+                </a>
+                <span class="text-[#b8957a] text-xs">· 135 posts · 693 followers</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT / FOOTER
+    ============================================================ -->
+    <footer id="contact" class="bg-[#2c1810] text-[#dcc9b8] pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- brand -->
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl font-bold font-display text-white tracking-tight">777</span>
+                        <span class="text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-[#b8957a] border-l border-[#5a3424] pl-3">Coffee Shop</span>
+                    </div>
+                    <p class="mt-4 text-sm text-[#b8957a] max-w-xs leading-relaxed">
+                        Fuel your day with specialty coffee and pastries in the heart of Cape Town.
+                        All runways lead to The 777.
+                    </p>
+                    <div class="mt-4 flex gap-4">
+                        <a href="#" class="social-icon text-[#b8957a] hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-[#b8957a] hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon text-[#b8957a] hover:text-white text-xl"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon text-[#b8957a] hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- contact -->
+                <div>
+                    <h4 class="font-display text-white text-lg mb-3">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-pin text-[#c9a87c] mt-1"></i>
+                            <span>66 Keerom Street, Cape Town</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone-alt text-[#c9a87c] mt-1"></i>
+                            <a href="tel:+27655936130" class="hover:text-white transition">+27 65 593 6130</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fab fa-instagram text-[#c9a87c] mt-1"></i>
+                            <a href="#" class="hover:text-white transition">@the777coffeeshop</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[#c9a87c] mt-1"></i>
+                            <span>Daily 6:30 AM – 9:30 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- quick links -->
+                <div>
+                    <h4 class="font-display text-white text-lg mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#menu" class="hover:text-white transition">Menu</a></li>
+                        <li><a href="#products" class="hover:text-white transition">Shop Coffee</a></li>
+                        <li><a href="#hours" class="hover:text-white transition">Trading Hours</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                    <div class="mt-4 inline-block bg-[#3d2317] px-4 py-1.5 rounded-full text-[0.6rem] uppercase tracking-wider text-[#c9a87c] border border-[#5a3424]">
+                        <i class="fas fa-check-circle mr-1"></i> Fully Halal
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-[#3d2317] flex flex-col sm:flex-row items-center justify-between text-[0.7rem] text-[#7a4a34]">
+                <span>&copy; 2026 The 777 Coffee Shop. All rights reserved. · Site by <a href="../../index.html" class="text-[#c9a87c] hover:text-white">OBM Solutions</a></span>
+                <span class="flex items-center gap-2 mt-2 sm:mt-0">
+                    <i class="fas fa-plane text-[#5a3424]"></i>
+                    All runways lead to The 777
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    MOBILE MENU TOGGLE
+    ============================================================ -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // close menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                const icon = btn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
+            });
+        });
+    </script>
+
+</body>
+</html>

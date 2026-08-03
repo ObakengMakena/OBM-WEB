@@ -1,5 +1,7 @@
 /* Modernist — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
+@font-face{font-family:'Archivo';font-style:normal;font-weight:400;font-display:swap;src:url('/vendor/fonts/archivo-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600;font-display:swap;src:url('/vendor/fonts/archivo-latin-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:800;font-display:swap;src:url('/vendor/fonts/archivo-latin-800-normal.woff2') format('woff2')}
 
 :root {
   --color-bg: #f3f2f2;

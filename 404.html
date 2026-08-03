@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Page not found — OBM Solutions</title>
+<meta name="description" content="That page could not be found. Head back to OBM Solutions.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="_ds/modernist-0d8e7b9d-8327-46db-924a-16cf83e298df/styles.css">
+<script src="_ds/modernist-0d8e7b9d-8327-46db-924a-16cf83e298df/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; text-wrap: pretty; }
+  a { color: var(--color-accent-700); text-underline-offset: 3px; }
+  a:hover { color: var(--color-accent-800); }
+  .nav { position: relative; }
+  .navlinks { display: flex; gap: clamp(14px,2vw,28px); align-items: center; margin-right: clamp(14px,2vw,28px); }
+  .navtoggle { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .navburger { display: none; }
+  @media (max-width: 860px) {
+    .navburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; margin-right: 4px; cursor: pointer; }
+    .navburger span { display: block; width: 22px; height: 2px; background: var(--color-text); }
+    .navtoggle:checked ~ .navburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navtoggle:checked ~ .navburger span:nth-child(2) { opacity: 0; }
+    .navtoggle:checked ~ .navburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .navlinks { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; margin: 0; background: var(--color-bg); border-bottom: 2px solid var(--color-divider); }
+    .navtoggle:checked ~ .navlinks { display: flex; }
+    .navlinks a { padding: 16px clamp(20px,5vw,72px); border-top: 2px solid var(--color-divider); font-size: 16px; }
+  }
+</style>
+</helmet>
+
+<nav class="nav" style="position:sticky;top:0;z-index:30;background:var(--color-bg);padding-inline:clamp(20px,5vw,72px)">
+  <a href="index.html" class="nav-brand" style="color:var(--color-text);text-decoration:none;display:flex;align-items:center;gap:10px"><img src="favicon.png" alt="" style="height:26px;width:auto;display:block" />OBM Solutions</a>
+  <input class="navtoggle" type="checkbox" id="navtoggle" aria-label="Menu" />
+  <label class="navburger" for="navtoggle"><span></span><span></span><span></span></label>
+  <span class="navlinks">
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="services.html#packages">Packages</a>
+    <a href="contact.html">Contact</a>
+  </span>
+  <a class="btn btn-primary" href="https://wa.me/27793108775" style="white-space:nowrap">WhatsApp us</a>
+</nav>
+
+<section style="max-width:820px;margin:0 auto;padding:clamp(64px,11vw,140px) clamp(20px,5vw,72px);text-align:center">
+  <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:clamp(72px,16vw,140px);line-height:1;letter-spacing:-0.03em;color:var(--color-accent)">404</span>
+  <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin:20px 0 0">This page took a wrong turn.</h1>
+  <p style="font-size:17px;line-height:28px;max-width:48ch;margin:22px auto 0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">The link may be old or mistyped. Let's get you back on track — everything you need is a tap away.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:34px">
+    <a class="btn btn-primary" href="index.html" style="padding:12px 22px;font-size:15px">Back to home</a>
+    <a class="btn btn-secondary" href="work.html" style="padding:12px 22px;font-size:15px">See our work</a>
+    <a class="btn btn-secondary" href="contact.html" style="padding:12px 22px;font-size:15px">Get in touch</a>
+  </div>
+</section>
+
+<footer style="max-width:1200px;margin:0 auto;padding:56px clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;font-size:14px;line-height:28px;border-top:2px solid var(--color-divider)">
+  <div>
+    <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0">OBM Solutions</p>
+    <p style="margin:8px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Website design for Cape Town small businesses.</p>
+  </div>
+  <div>
+    <p style="margin:0"><a href="tel:+27793108775" style="text-decoration:none">+27 79 310 8775</a></p>
+    <p style="margin:0"><a href="mailto:obm.websolutions@gmail.com" style="text-decoration:none">obm.websolutions@gmail.com</a></p>
+  </div>
+  <div style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">
+    <p style="margin:0"><a href="privacy.html" style="text-decoration:none">Privacy Policy</a></p>
+    <p style="margin:0">Cape Town and the Peninsula</p>
+  </div>
+</footer>
+
+</x-dc>
+</body>
+</html>

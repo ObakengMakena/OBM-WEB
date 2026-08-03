@@ -9,14 +9,14 @@
 <x-dc>
 <helmet>
 <title>Contact OBM Solutions — Get a Free Website Demo in Cape Town</title>
-<meta name="description" content="Request a free website demo or a quote from OBM Solutions. WhatsApp 079 310 8775 or send us a message — we come to your business, anywhere from Table View to Somerset West.">
+<meta name="description" content="Request a free website demo or a quote from OBM Solutions. WhatsApp +27 79 310 8775 or send us a message — we come to your business, anywhere from Table View to Somerset West.">
 <link rel="canonical" href="https://obm-solutions.co.za/contact.html">
 <meta name="robots" content="index, follow">
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn, iMessage) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OBM Solutions">
 <meta property="og:title" content="Contact OBM Solutions — Get a Free Website Demo in Cape Town">
-<meta property="og:description" content="Request a free website demo or a quote from OBM Solutions. WhatsApp 079 310 8775 or send us a message — we come to your business, anywhere from Table View to Somerset West.">
+<meta property="og:description" content="Request a free website demo or a quote from OBM Solutions. WhatsApp +27 79 310 8775 or send us a message — we come to your business, anywhere from Table View to Somerset West.">
 <meta property="og:url" content="https://obm-solutions.co.za/contact.html">
 <meta property="og:image" content="https://obm-solutions.co.za/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <!-- Twitter/X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contact OBM Solutions — Get a Free Website Demo in Cape Town">
-<meta name="twitter:description" content="Request a free website demo or a quote from OBM Solutions. WhatsApp 079 310 8775 or send us a message — we come to your business, anywhere from Table View to Somerset West.">
+<meta name="twitter:description" content="Request a free website demo or a quote from OBM Solutions. WhatsApp +27 79 310 8775 or send us a message — we come to your business, anywhere from Table View to Somerset West.">
 <meta name="twitter:image" content="https://obm-solutions.co.za/og-image.jpg">
 
 <link rel="icon" href="favicon.png" type="image/png">
@@ -130,23 +130,27 @@
       <label for="obm-msg">Anything else we should know</label>
       <textarea class="input" id="obm-msg" name="message" placeholder="Current site or Instagram, when you would like to be live, and what the site needs to do for you."></textarea>
     </div>
+    <label for="obm-consent" style="display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:22px;cursor:pointer;color:color-mix(in srgb, var(--color-text) 82%, transparent)">
+      <input type="checkbox" id="obm-consent" name="consent" required="required" value="yes" style="margin-top:3px;flex:none;width:18px;height:18px" />
+      <span>I'm happy for OBM Solutions to store these details in order to respond to my enquiry. See the <a href="privacy.html">Privacy Policy</a>.</span>
+    </label>
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
       <button type="submit" class="btn btn-primary" disabled="{{ sending }}" style="padding:12px 20px;font-size:15px">{{ buttonLabel }}</button>
       <a class="btn btn-secondary" href="https://wa.me/27793108775" style="padding:12px 20px;font-size:15px">Or WhatsApp instead</a>
     </div>
     <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:0;padding:16px;border:2px solid var(--color-accent);font-size:15px;line-height:24px">Thank you — that is on its way. We reply within one working day. In a hurry? <a href="https://wa.me/27793108775">WhatsApp 079 310 8775</a>.</p>
+      <p style="margin:0;padding:16px;border:2px solid var(--color-accent);font-size:15px;line-height:24px">Thank you — that is on its way. We reply within one working day. In a hurry? <a href="https://wa.me/27793108775">WhatsApp +27 79 310 8775</a>.</p>
     </sc-if>
     <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:0;padding:16px;border:2px solid var(--color-text);font-size:15px;line-height:24px">That did not send — the connection may have dropped. Please try again, or reach us directly on <a href="https://wa.me/27793108775">WhatsApp</a> or <a href="mailto:obmsolutions@gmail.com">obmsolutions@gmail.com</a>.</p>
+      <p style="margin:0;padding:16px;border:2px solid var(--color-text);font-size:15px;line-height:24px">That did not send — the connection may have dropped. Please try again, or reach us directly on <a href="https://wa.me/27793108775">WhatsApp</a> or <a href="mailto:obm.websolutions@gmail.com">obm.websolutions@gmail.com</a>.</p>
     </sc-if>
   </form>
 
   <aside style="display:grid;gap:32px">
     <div>
       <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Direct</span>
-      <p style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:34px;margin:0"><a href="tel:+27793108775" style="text-decoration:none">079 310 8775</a></p>
-      <p style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:34px;margin:0;word-break:break-word"><a href="mailto:obmsolutions@gmail.com" style="text-decoration:none">obmsolutions@gmail.com</a></p>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:34px;margin:0"><a href="tel:+27793108775" style="text-decoration:none">+27 79 310 8775</a></p>
+      <p style="font-family:var(--font-heading);font-weight:800;font-size:24px;line-height:34px;margin:0;word-break:break-word"><a href="mailto:obm.websolutions@gmail.com" style="text-decoration:none">obm.websolutions@gmail.com</a></p>
     </div>
     <div style="border-top:2px solid var(--color-divider);padding-top:28px">
       <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Where we work</span>
@@ -180,8 +184,8 @@
     <p style="margin:8px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Website design for Cape Town small businesses.</p>
   </div>
   <div>
-    <p style="margin:0"><a href="tel:+27793108775" style="text-decoration:none">079 310 8775</a></p>
-    <p style="margin:0"><a href="mailto:obmsolutions@gmail.com" style="text-decoration:none">obmsolutions@gmail.com</a></p>
+    <p style="margin:0"><a href="tel:+27793108775" style="text-decoration:none">+27 79 310 8775</a></p>
+    <p style="margin:0"><a href="mailto:obm.websolutions@gmail.com" style="text-decoration:none">obm.websolutions@gmail.com</a></p>
   </div>
   <div style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">
     <p style="margin:0">Cape Town and the Peninsula</p>

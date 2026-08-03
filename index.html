@@ -227,7 +227,7 @@
       <span style="display:block">Let's get you found.</span>
     </h2>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:42px">
-      <a class="btn" href="https://wa.me/27793108775" style="padding:12px 20px;font-size:15px;color:var(--color-bg);border:1px solid var(--color-bg)">WhatsApp 079 310 8775</a>
+      <a class="btn" href="https://wa.me/27793108775" style="padding:12px 20px;font-size:15px;color:var(--color-bg);border:1px solid var(--color-bg)">WhatsApp +27 79 310 8775</a>
       <a class="btn" href="contact.html" style="padding:12px 20px;font-size:15px;color:var(--color-bg);border:1px solid var(--color-bg)">Request a quote</a>
     </div>
   </div>
@@ -239,11 +239,12 @@
     <p style="margin:8px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Website design for Cape Town small businesses.</p>
   </div>
   <div>
-    <p style="margin:0"><a href="tel:+27793108775" style="text-decoration:none">079 310 8775</a></p>
-    <p style="margin:0"><a href="mailto:obmsolutions@gmail.com" style="text-decoration:none">obmsolutions@gmail.com</a></p>
+    <p style="margin:0"><a href="tel:+27793108775" style="text-decoration:none">+27 79 310 8775</a></p>
+    <p style="margin:0"><a href="mailto:obm.websolutions@gmail.com" style="text-decoration:none">obm.websolutions@gmail.com</a></p>
   </div>
   <div style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">
     <p style="margin:0">Cape Town and the Peninsula</p>
+    <p style="margin:0"><a href="privacy.html" style="text-decoration:none">Privacy Policy</a></p>
     <p style="margin:0">Mon–Fri 08:00–18:00, Sat by arrangement</p>
   </div>
 </footer>
@@ -254,7 +255,7 @@ class Component extends DCLogic {
     const style = this.props.ctaStyle ?? 'WhatsApp';
     const map = {
       'WhatsApp': { label: 'WhatsApp us', href: 'https://wa.me/27793108775' },
-      'Call': { label: 'Call 079 310 8775', href: 'tel:+27793108775' },
+      'Call': { label: 'Call +27 79 310 8775', href: 'tel:+27793108775' },
       'Quote form': { label: 'Get a quote', href: 'contact.html' }
     };
     const cta = map[style] || map['WhatsApp'];

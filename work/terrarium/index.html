@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Terrarium | By Chris Erasmus — Fine Dining Cape Town</title>
+  <!-- Self-hosted fonts (Inter + Cormorant Garamond) + Font Awesome -->
+  <link rel="stylesheet" href="../_assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../_assets/fa/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FDFAF5;
+      color: #2C2A29;
+    }
+    h1, h2, h3, h4, .serif-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .menu-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+    }
+    .border-earth {
+      border-color: #E6DDD0;
+    }
+    .text-earth {
+      color: #4A3B2C;
+    }
+    .bg-earth-light {
+      background-color: #F4EFE6;
+    }
+    .hover-gold:hover {
+      color: #B47C44;
+      transition: color 0.2s ease;
+    }
+    .hero-overlay {
+      background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+    }
+    .instagram-grid figure img {
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .instagram-grid figure:hover img {
+      transform: scale(1.02);
+    }
+    .award-badge {
+      background: rgba(30, 59, 44, 0.03);
+      backdrop-filter: blur(2px);
+    }
+    @media (max-width: 768px) {
+      .container-px {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+    }
+    /* OBM portfolio ribbon */
+    .obm-ribbon {
+      background: #1E2F26;
+      color: #cbe0d2;
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      padding: 0.5rem 1rem;
+    }
+    .obm-ribbon a { color: #9ec3ac; font-weight: 600; text-decoration: none; }
+    .obm-ribbon a:hover { color: #fff; }
+  </style>
+  <!-- Self-hosted compiled Tailwind — loaded after inline styles so utility overrides win (matches Play CDN order) -->
+  <link rel="stylesheet" href="tailwind.css">
+</head>
+<body class="antialiased">
+
+  <!-- OBM portfolio ribbon -->
+  <div class="obm-ribbon">Preview built by OBM&nbsp;Solutions — a fine-dining site. <a href="../../work.html">← Back to portfolio</a></div>
+
+  <!-- HEADER – Minimalist / earthy -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-sm border-b border-[#E6DDD0] shadow-sm">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i class="fas fa-leaf text-[#2F5D3A] text-xl"></i>
+        <span class="text-2xl font-semibold tracking-wide serif-heading text-[#2C2A29]">TERRARIUM</span>
+        <span class="hidden sm:inline-block ml-2 text-xs font-light text-stone-500 tracking-wider uppercase border-l border-stone-300 pl-2">by Chris Erasmus</span>
+      </div>
+      <nav class="flex items-center gap-6 text-sm font-medium text-stone-700">
+        <a href="#menu" class="hidden md:inline-block hover:text-[#B47C44] transition">Menu</a>
+        <a href="#journal" class="hidden md:inline-block hover:text-[#B47C44] transition">Journal</a>
+        <a href="#contact" class="hidden md:inline-block hover:text-[#B47C44] transition">Reservations</a>
+        <a href="#contact" class="hidden sm:inline-block bg-[#1E3B2C] text-white px-5 py-1.5 rounded-full text-sm font-medium shadow-md hover:bg-[#2A4F3A] transition"><i class="far fa-calendar-alt mr-2"></i>Book a table</a>
+        <!-- Mobile hamburger -->
+        <button id="nav-toggle" class="md:hidden text-[#1E3B2C] text-xl focus:outline-none" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm border-t border-[#E6DDD0] px-5 py-4">
+      <nav class="flex flex-col gap-1 text-sm font-medium text-stone-700">
+        <a href="#menu" class="py-2.5 border-b border-[#F0E9DE] hover:text-[#B47C44] transition">Menu</a>
+        <a href="#journal" class="py-2.5 border-b border-[#F0E9DE] hover:text-[#B47C44] transition">Journal</a>
+        <a href="#contact" class="py-2.5 border-b border-[#F0E9DE] hover:text-[#B47C44] transition">Reservations</a>
+        <a href="#contact" class="mt-3 bg-[#1E3B2C] text-white text-center px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#2A4F3A] transition"><i class="far fa-calendar-alt mr-2"></i>Book a table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero + New Menu Intro (matching screenshot mood) -->
+    <section class="relative bg-[#DFD6C8] overflow-hidden">
+      <div class="absolute inset-0 bg-black/20 z-0"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-5 py-16 md:py-24 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-center md:text-left">
+          <span class="inline-block px-3 py-1 bg-white/30 backdrop-blur-sm text-stone-800 text-xs font-semibold rounded-full tracking-wide mb-4"><i class="far fa-clock mr-1"></i> New chapter · July 2025</span>
+          <h1 class="text-5xl md:text-7xl font-bold serif-heading text-[#1E2F26] leading-tight">Forest to table<br>reimagined</h1>
+          <p class="text-lg text-stone-800 max-w-xl mt-4 font-light">Introducing our new à la carte & Winter Tasting Menu — an ode to indigenous flavours, texture contrasts, and sustainable artistry.</p>
+          <div class="flex flex-wrap gap-4 mt-6 justify-center md:justify-start">
+            <a href="#menu" class="bg-[#1E3B2C] text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-lg hover:bg-[#132B1F] transition"><i class="fas fa-utensils mr-2"></i>Explore menus</a>
+            <a href="#award" class="border border-[#1E3B2C] text-[#1E3B2C] bg-white/70 backdrop-blur-sm px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#1E3B2C] hover:text-white transition">Emerging Green Star</a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 max-w-md">
+          <div class="bg-white/30 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/40">
+            <p class="text-xs uppercase tracking-wider text-stone-700"><i class="fas fa-newspaper mr-1"></i> Latest post · 2 July 2025</p>
+            <p class="font-semibold italic text-stone-800 text-sm mt-1">“A contrast of textures and tones — the new menu channels Terrarium’s creative spirit.”</p>
+            <div class="flex items-center gap-3 mt-2 text-xs text-stone-600"><i class="far fa-heart"></i> 56 <i class="far fa-comment ml-2"></i> 25 <i class="far fa-bookmark ml-2"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARD SECTION: EMERGING GREEN STAR + EAT OUT (screenshot fidelity) -->
+    <section id="award" class="max-w-7xl mx-auto px-5 py-16 border-b border-[#E6DDD0]">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="order-2 md:order-1">
+          <div class="inline-block bg-[#1E3B2C]/10 px-4 py-1.5 rounded-full text-[#1E3B2C] text-xs font-semibold tracking-wide mb-4"><i class="fas fa-star-of-life mr-1"></i> EAT OUT WOOLWORTHS AWARDS 2026</div>
+          <h2 class="text-4xl serif-heading font-bold text-[#2C2A29]">Emerging Green Star Award</h2>
+          <p class="text-stone-600 mt-4 leading-relaxed">Terrarium has been awarded the <span class="font-semibold">Emerging Green Star</span> — a recognition of its commitment to sustainability from the very foundations: zero-waste philosophy, local foraging, and ethical sourcing across every dish.</p>
+          <div class="flex items-center gap-3 mt-6">
+            <div class="w-12 h-12 rounded-full bg-[#2F5D3A] flex items-center justify-center text-white"><i class="fas fa-seedling"></i></div>
+            <div><p class="text-sm font-medium">“From root to leaf, every element tells a story.”</p><p class="text-xs text-stone-500">— Chris Erasmus, Chef-Owner</p></div>
+          </div>
+        </div>
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="bg-gradient-to-br from-[#E8DFD1] to-[#D9CEBD] p-5 rounded-3xl shadow-md w-full max-w-xs text-center border border-white/40">
+            <i class="fas fa-certificate text-5xl text-[#2F5D3A] mb-3"></i>
+            <p class="font-bold text-2xl serif-heading">GREEN STAR</p>
+            <div class="flex justify-center gap-3 mt-2 text-sm"><span class="bg-white rounded-full px-3 py-0.5 text-xs">EAT OUT</span><span class="bg-white rounded-full px-3 py-0.5 text-xs">WOOLWORTHS</span></div>
+            <p class="text-xs mt-3 text-stone-600">Sustainable gastronomy leader 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- À LA CARTE MENU (Starters, Mains, Sweet) replicated from IMG_7800, IMG_7801, IMG_7802 -->
+    <section id="menu" class="max-w-7xl mx-auto px-5 py-16 scroll-mt-24">
+      <div class="text-center mb-12">
+        <span class="text-sm uppercase tracking-[0.2em] text-[#8A7A66] font-semibold">À la carte</span>
+        <h2 class="text-5xl serif-heading font-semibold mt-2 text-[#2C2A29]">creative spirit · personal & flexible</h2>
+        <div class="w-20 h-0.5 bg-[#B47C44] mx-auto mt-4 rounded-full"></div>
+        <p class="max-w-2xl mx-auto text-stone-500 mt-4">Terrarium’s signature imagination, now in a flexible way to craft your journey.</p>
+      </div>
+
+      <!-- STARTERS GRID -->
+      <div class="mb-16">
+        <div class="flex items-center gap-3 mb-6 border-l-4 border-[#B47C44] pl-4">
+          <i class="fas fa-seedling text-[#5C7C5A] text-2xl"></i>
+          <h3 class="text-3xl serif-heading font-semibold">Starters</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- Grains & Gravy -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card">
+            <img src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=600&auto=format" alt="Sourdough bone marrow" class="h-48 w-full object-cover">
+            <div class="p-5"><div class="flex justify-between items-start"><div><h4 class="font-bold text-xl serif-heading">Grains & Gravy</h4><p class="text-stone-500 text-sm mt-1">Fried sourdough · Beef drippings · Bone marrow</p></div><span class="text-lg font-bold text-[#1E3B2C]">R200</span></div></div>
+          </div>
+          <!-- Beef Tataki -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card">
+            <img src="https://images.unsplash.com/photo-1624174760600-3f5b3e7cba0c?w=600&auto=format" alt="Beef tataki" class="h-48 w-full object-cover">
+            <div class="p-5"><div class="flex justify-between items-start"><div><h4 class="font-bold text-xl serif-heading">Beef Tataki</h4><p class="text-stone-500 text-sm">Tamarind XO · Smoked emulsion · Curry leaf</p></div><span class="text-lg font-bold text-[#1E3B2C]">R225</span></div></div>
+          </div>
+          <!-- Mushroom -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&auto=format" alt="Mushroom" class="h-48 w-full object-cover">
+            <div class="p-5"><div class="flex justify-between items-start"><div><h4 class="font-bold text-xl serif-heading">Mushroom</h4><p class="text-stone-500 text-sm">Coriander · Tigers’ milk · Pommes de terre</p></div><span class="text-lg font-bold text-[#1E3B2C]">R170</span></div></div>
+          </div>
+          <!-- Ceviche -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card">
+            <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?w=600&auto=format" alt="Ceviche" class="h-48 w-full object-cover">
+            <div class="p-5"><div class="flex justify-between items-start"><div><h4 class="font-bold text-xl serif-heading">Ceviche</h4><p class="text-stone-500 text-sm">Linefish · Charred nato · Atchar · Chilli oil</p></div><span class="text-lg font-bold text-[#1E3B2C]">R275</span></div></div>
+          </div>
+          <!-- Bull Blood Beets -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card">
+            <img src="https://images.unsplash.com/photo-1586104931614-9aad7f14b55c?w=600&auto=format" alt="Beetroot cheese" class="h-48 w-full object-cover">
+            <div class="p-5"><div class="flex justify-between items-start"><div><h4 class="font-bold text-xl serif-heading">Bull Blood Beets</h4><p class="text-stone-500 text-sm">Raw milk cheese curds · Fennel pollen vinaigrette · Burnt broccoli stems</p></div><span class="text-lg font-bold text-[#1E3B2C]">R170</span></div></div>
+          </div>
+          <!-- Saldanha Bay Oysters -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card">
+            <img src="https://images.unsplash.com/photo-1584271854089-9bb3e5168e32?w=600&auto=format" alt="Oysters" class="h-48 w-full object-cover">
+            <div class="p-5"><div class="flex justify-between items-start"><div><h4 class="font-bold text-xl serif-heading">Saldanha Bay Oysters</h4><p class="text-stone-500 text-sm">Lime granita · Coconut · Chilli</p></div><span class="text-lg font-bold text-[#1E3B2C]">R195</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAINS GRID -->
+      <div class="mb-16">
+        <div class="flex items-center gap-3 mb-6 border-l-4 border-[#B47C44] pl-4">
+          <i class="fas fa-fire text-[#5C7C5A] text-2xl"></i>
+          <h3 class="text-3xl serif-heading font-semibold">Mains</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- BBQ -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card"><img src="https://images.unsplash.com/photo-1625938144747-6f1c7c3b8a2e?w=600&auto=format" alt="Brisket" class="h-48 w-full object-cover"><div class="p-5"><div class="flex justify-between"><div><h4 class="font-bold text-xl serif-heading">BBQ</h4><p class="text-stone-500 text-sm">16-Hour oak smoked beef brisket · Onions · Potato</p></div><span class="text-lg font-bold text-[#1E3B2C]">R300</span></div></div></div>
+          <!-- Gnocchi -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format" alt="Gnocchi" class="h-48 w-full object-cover"><div class="p-5"><div class="flex justify-between"><div><h4 class="font-bold text-xl serif-heading">Gnocchi</h4><p class="text-stone-500 text-sm">Globe artichoke · Potato · Peas · Vadouvan</p></div><span class="text-lg font-bold text-[#1E3B2C]">R195</span></div></div></div>
+          <!-- Steak & Caesar -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card"><img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&auto=format" alt="Ribeye" class="h-48 w-full object-cover"><div class="p-5"><div class="flex justify-between"><div><h4 class="font-bold text-xl serif-heading">Steak & Caesar</h4><p class="text-stone-500 text-sm">Wild Kalahari rib-eye · Anchovy salad · Chipotle butter</p></div><span class="text-lg font-bold text-[#1E3B2C]">R370</span></div></div></div>
+          <!-- Risotto -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card"><img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600&auto=format" alt="Risotto" class="h-48 w-full object-cover"><div class="p-5"><div class="flex justify-between"><div><h4 class="font-bold text-xl serif-heading">Risotto</h4><p class="text-stone-500 text-sm">Butternut · Ginger · Local Pecorino · Seeded beurre noisette</p></div><span class="text-lg font-bold text-[#1E3B2C]">R255</span></div></div></div>
+          <!-- West Coast Catch -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card"><img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&auto=format" alt="Linefish" class="h-48 w-full object-cover"><div class="p-5"><div class="flex justify-between"><div><h4 class="font-bold text-xl serif-heading">West Coast Catch</h4><p class="text-stone-500 text-sm">Potato · Fish bone velouté · Braised fennel</p></div><span class="text-lg font-bold text-[#1E3B2C]">R320</span></div></div></div>
+          <!-- Karoo Lamb Rib -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#EDE5DB] menu-card"><img src="https://images.unsplash.com/photo-1603065610957-25fafd51edf2?w=600&auto=format" alt="Lamb rib" class="h-48 w-full object-cover"><div class="p-5"><div class="flex justify-between"><div><h4 class="font-bold text-xl serif-heading">Karoo Lamb Rib</h4><p class="text-stone-500 text-sm">Harissa · Roasted turnip · In-house ricotta</p></div><span class="text-lg font-bold text-[#1E3B2C]">R295</span></div></div></div>
+        </div>
+      </div>
+
+      <!-- SWEET SECTION -->
+      <div>
+        <div class="flex items-center gap-3 mb-6 border-l-4 border-[#B47C44] pl-4">
+          <i class="fas fa-cake-candles text-[#5C7C5A] text-2xl"></i>
+          <h3 class="text-3xl serif-heading font-semibold">Sweet</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-5 rounded-xl shadow-sm border border-[#EDE5DB]"><div class="flex justify-between items-start"><div><h4 class="font-bold text-lg">Lime EVOO Sponge</h4><p class="text-stone-500 text-xs">Textures of blueberry · Lavender meringue · Sherbet</p></div><span class="font-bold text-[#1E3B2C]">R140</span></div></div>
+          <div class="bg-white p-5 rounded-xl shadow-sm border border-[#EDE5DB]"><div class="flex justify-between items-start"><div><h4 class="font-bold text-lg">Hertzoggie</h4><p class="text-stone-500 text-xs">Coconut ice cream · Lemon syrup</p></div><span class="font-bold text-[#1E3B2C]">R160</span></div></div>
+          <div class="bg-white p-5 rounded-xl shadow-sm border border-[#EDE5DB]"><div class="flex justify-between items-start"><div><h4 class="font-bold text-lg">Charred Fruit Cake</h4><p class="text-stone-500 text-xs">Rooibos stewed fruit · Vanilla bean · Orange</p></div><span class="font-bold text-[#1E3B2C]">R135</span></div></div>
+          <div class="bg-white p-5 rounded-xl shadow-sm border border-[#EDE5DB]"><div class="flex justify-between items-start"><div><h4 class="font-bold text-lg">Local Cheeses</h4><p class="text-stone-500 text-xs">Lavache · Hive honeycomb</p></div><span class="font-bold text-[#1E3B2C]">R230</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WINTER MENU · 15 COURSE (exact from IMG_7788/IMG_7787) -->
+    <section class="bg-[#E8E1D5] py-20 border-y border-[#D6CCBC]">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="flex-1">
+            <div class="inline-block bg-[#1E3B2C] text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-wide">Limited edition · Forest to table</div>
+            <h2 class="text-5xl serif-heading font-bold mt-4 text-[#1E2A20]">Winter Menu</h2>
+            <div class="flex items-baseline gap-3 mt-2"><span class="text-4xl font-bold text-[#B47C44]">R695</span><span class="text-stone-600">per person</span><span class="bg-stone-200 px-3 py-0.5 rounded-full text-sm font-medium">15 courses</span></div>
+            <div class="mt-8 space-y-6">
+              <div class="border-b border-stone-400/30 pb-3"><p class="font-semibold text-lg">🍞 Yeast & Spread</p><p class="text-stone-700 text-sm">Beef bone marrow butter, parmesan corn flakes, porcini mushroom butter, whipped virgin butter + curried oil & mustard.</p></div>
+              <div class="border-b border-stone-400/30 pb-3"><p class="font-semibold text-lg">🐟 Kingklip</p><p class="text-stone-700 text-sm">Charred leek · Textures of onion · Vadouvan · Turmeric</p></div>
+              <div class="border-b border-stone-400/30 pb-3"><p class="font-semibold text-lg">🍧 Sorbet</p><p class="text-stone-700 text-sm">Seasonal garden sorbet · palate cleanser</p></div>
+              <div class="border-b border-stone-400/30 pb-3"><p class="font-semibold text-lg">🦌 Venison</p><p class="text-stone-700 text-sm">Roasted venison loin · Beetroot · Black garlic · Plum</p></div>
+              <div><p class="font-semibold text-lg">🍫 Tanzanie Dark Chocolate</p><p class="text-stone-700 text-sm">Dark chocolate · Cranberry · Dulce de leche · Chai</p></div>
+            </div>
+            <a href="#contact" class="inline-block mt-8 bg-[#1E3B2C] text-white px-8 py-3 rounded-full text-sm font-medium shadow-lg hover:bg-[#2E553F] transition"><i class="fas fa-leaf mr-2"></i>Reserve winter experience</a>
+          </div>
+          <div class="flex-1 flex justify-center">
+            <div class="rounded-2xl overflow-hidden shadow-2xl max-w-sm w-full"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format" alt="Winter dish venison" class="w-full h-auto object-cover"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASTRY CHEF ALEXANDRIA + INSTAGRAM MOMENTS (screenshot meet chef + posts) -->
+    <section class="max-w-7xl mx-auto px-5 py-16">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 bg-earth-light p-8 rounded-3xl shadow-sm">
+          <div class="flex items-center gap-2 text-[#B47C44]"><i class="fas fa-crown"></i><span class="text-xs font-semibold uppercase tracking-wider">Meet the artist</span></div>
+          <h3 class="text-4xl serif-heading font-bold mt-2">Alexandria · Pastry Chef</h3>
+          <p class="text-stone-600 mt-3 leading-relaxed">Her craft is shaped by patience, passion and an obsession with texture. Each dessert unravels layers of flavour — from olive oil sponge to lavender meringue that cracks just beneath the surface.</p>
+          <div class="mt-6 flex items-center gap-2 text-sm"><i class="fab fa-instagram"></i> <span class="text-stone-500">@theterrarium_restaurant · 27 May</span></div>
+          <div class="w-16 h-0.5 bg-[#B47C44] mt-5"></div>
+          <p class="italic text-stone-500 mt-3">“Every crack of meringue reveals a different story — moving through olive oil sponge, forest berries, and whispers of sherbet.”</p>
+        </div>
+        <div class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&auto=format" alt="Pastry Chef" class="w-full h-80 object-cover"></div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM-LIKE FEED: post grid (New Menu, Award, Meringue, Oyster post) -->
+    <section id="journal" class="bg-[#F9F5EE] py-14 border-t border-[#E6DDD0] scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="flex justify-between items-end flex-wrap mb-8">
+          <div><span class="text-xs uppercase tracking-wider text-stone-500"><i class="fab fa-instagram mr-1"></i> @theterrarium_restaurant</span><h3 class="text-3xl serif-heading font-semibold mt-1">Latest from the terrarium</h3></div>
+          <a href="#" class="text-sm font-medium text-[#B47C44] hover:underline">Follow journey →</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl overflow-hidden shadow-sm"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format" class="h-60 w-full object-cover"><div class="p-4"><p class="font-medium text-sm"><i class="far fa-heart text-rose-500"></i> 1,025 likes</p><p class="text-xs text-stone-500">New Menu · 2 July 2025 · forest flavours</p></div></div>
+          <div class="bg-white rounded-xl overflow-hidden shadow-sm"><img src="https://images.unsplash.com/photo-1598514999142-1443a0de6702?w=500&auto=format" class="h-60 w-full object-cover"><div class="p-4"><p class="font-medium text-sm"><i class="far fa-heart"></i> 890 · Emerging Green Star</p><p class="text-xs text-stone-500">Eat Out Woolworths Award 2026</p></div></div>
+          <div class="bg-white rounded-xl overflow-hidden shadow-sm"><img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&auto=format" class="h-60 w-full object-cover"><div class="p-4"><p class="font-medium text-sm"><i class="far fa-heart"></i> 651 · Meringue & olive oil sponge</p><p class="text-xs text-stone-500">“hiding what sits beneath the surface”</p></div></div>
+          <div class="bg-white rounded-xl overflow-hidden shadow-sm"><img src="https://images.unsplash.com/photo-1575428106986-ba1b6f8eb34e?w=500&auto=format" class="h-60 w-full object-cover"><div class="p-4"><p class="font-medium text-sm"><i class="far fa-heart"></i> 442 · winter kingklip</p><p class="text-xs text-stone-500">forest to table · 15 course journey</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER earthy minimalist -->
+    <footer id="contact" class="bg-[#1E2F26] text-stone-300 py-12 border-t border-[#314F3B] scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-5 grid gap-8 md:grid-cols-4">
+        <div><p class="text-white text-xl serif-heading font-semibold">TERRARIUM</p><p class="text-xs mt-2">by Chris Erasmus · Cape Town</p><p class="text-xs mt-4">V&A Waterfront, Silo District</p><div class="flex gap-3 mt-4 text-lg"><i class="fab fa-instagram hover:text-white"></i><i class="fab fa-facebook-f hover:text-white"></i></div></div>
+        <div><p class="font-semibold text-white">Contact</p><p class="text-sm mt-2">+27 (0)21 123 4567</p><p class="text-sm">hello@terrarium.co.za</p></div>
+        <div><p class="font-semibold text-white">Hours</p><p class="text-sm mt-2">Tue–Sat: 18:00 – 22:30</p><p class="text-sm">Sun & Mon: Private events</p></div>
+        <div><p class="font-semibold text-white">Sustainability</p><p class="text-sm mt-2">Emerging Green Star 2026 · Zero waste kitchen · Local foraging</p></div>
+      </div>
+      <div class="text-center text-xs text-stone-400 border-t border-[#3A5542] mt-10 pt-6">© Terrarium 2026 — A forest to table experience. · Site by <a href="../../index.html" class="text-[#9ec3ac] hover:text-white">OBM Solutions</a></div>
+    </footer>
+  </main>
+
+  <!-- MOBILE NAV TOGGLE -->
+  <script>
+    (function () {
+      const toggle = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const icon = toggle.querySelector('i');
+      function close() {
+        menu.classList.add('hidden');
+        icon.classList.add('fa-bars'); icon.classList.remove('fa-xmark');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('hidden') === false;
+        icon.classList.toggle('fa-bars', !open);
+        icon.classList.toggle('fa-xmark', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    })();
+  </script>
+
+</body>
+</html>
