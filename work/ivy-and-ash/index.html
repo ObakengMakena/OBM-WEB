@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivy &amp; Ash — Hair Studio in Cape Town</title>
+<meta name="description" content="Ivy &amp; Ash Hair Studio — a calm, considered salon in Cape Town. Cuts, colour and care. Book your chair online.">
+<!-- CONCEPT DEMO built by OBM Solutions. Fictional business for portfolio purposes. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f2ece6;         /* warm greige */
+    --bg-2:#e8ded6;
+    --ink:#2a2226;        /* aubergine-charcoal */
+    --rose:#b98a86;       /* dusty rose */
+    --sage:#8d9a82;       /* eucalyptus */
+    --gold:#b08d57;       /* soft gold */
+    --muted:#6f645f;
+    --line:#d7cabf;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Jost",system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.7;text-wrap:pretty;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Cormorant",Georgia,serif;font-weight:500;line-height:1.06;margin:0;letter-spacing:.005em}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(22px,5vw,60px)}
+  .btn{display:inline-block;font-family:"Jost";font-weight:400;letter-spacing:.14em;text-transform:uppercase;font-size:12.5px;text-decoration:none;padding:15px 30px;border-radius:2px;transition:background .2s ease,color .2s ease}
+  .btn-ink{background:var(--ink);color:var(--bg)}
+  .btn-ink:hover{background:var(--rose)}
+  .btn-line{border:1px solid var(--ink);color:var(--ink)}
+  .btn-line:hover{background:var(--ink);color:var(--bg)}
+  .eyebrow{font-family:"Jost";font-weight:400;letter-spacing:.3em;text-transform:uppercase;font-size:11.5px;color:var(--gold)}
+  .rule{width:34px;height:1px;background:var(--gold);margin:18px 0}
+
+  nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .navbar{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{font-family:"Cormorant";font-weight:600;font-size:26px;letter-spacing:.02em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
+  .brand .amp{color:var(--rose);font-style:italic}
+  .navlinks{display:flex;gap:34px;align-items:center}
+  .navlinks a{text-decoration:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-weight:400}
+  .navlinks a:hover{color:var(--rose)}
+  .navtoggle,.burger{display:none}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:clamp(56px,8vw,110px)}
+  .hero h1{font-size:clamp(52px,8.5vw,104px);font-weight:400}
+  .hero h1 em{font-style:italic;color:var(--rose)}
+  .hero p{font-size:18px;color:var(--muted);max-width:40ch;margin:26px 0 34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .portrait{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden;background:linear-gradient(160deg,var(--bg-2),var(--sage));display:grid;place-items:center}
+  .portrait::before{content:"";position:absolute;inset:14px;border:1px solid color-mix(in srgb,#fff 55%,transparent)}
+  .portrait small{position:relative;font-family:"Jost";font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,#fff 85%,transparent)}
+
+  section{padding-block:clamp(56px,8vw,100px)}
+  .center{text-align:center;max-width:56ch;margin:0 auto 52px}
+  .center h2{font-size:clamp(34px,5vw,58px);font-weight:400}
+  .center .rule{margin-inline:auto}
+  .center p{color:var(--muted);margin-top:12px}
+
+  /* services / price list */
+  .band{background:var(--bg-2)}
+  .price{display:grid;grid-template-columns:1fr 1fr;gap:8px 64px;max-width:900px;margin:0 auto}
+  .prow{display:flex;align-items:baseline;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .prow .pn{font-family:"Cormorant";font-size:23px;font-weight:600;white-space:nowrap}
+  .prow .pd{font-size:13.5px;color:var(--muted)}
+  .prow .dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
+  .prow .pp{font-family:"Cormorant";font-size:21px;font-weight:600;color:var(--gold);white-space:nowrap}
+  .price-note{text-align:center;color:var(--muted);font-size:14px;margin-top:34px}
+
+  /* gallery */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gal .t{aspect-ratio:3/4;border-radius:3px;position:relative;overflow:hidden;display:grid;place-items:center}
+  .gal .t::before{content:"";position:absolute;inset:10px;border:1px solid color-mix(in srgb,#fff 45%,transparent)}
+  .gal .t:nth-child(1){background:linear-gradient(160deg,var(--rose),var(--ink))}
+  .gal .t:nth-child(2){background:linear-gradient(160deg,var(--sage),var(--bg-2))}
+  .gal .t:nth-child(3){background:linear-gradient(160deg,var(--gold),var(--ink))}
+  .gal .t:nth-child(4){background:linear-gradient(160deg,var(--bg-2),var(--rose))}
+  .gal .t:nth-child(5){background:linear-gradient(160deg,var(--ink),var(--sage))}
+  .gal .t:nth-child(6){background:linear-gradient(160deg,var(--rose),var(--gold))}
+  .gal .t small{position:relative;font-family:"Jost";font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,#fff 82%,transparent)}
+
+  /* team */
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .stylist{text-align:center}
+  .stylist .av{aspect-ratio:1/1;border-radius:50%;margin:0 auto 18px;max-width:190px;background:linear-gradient(160deg,var(--bg-2),var(--rose));display:grid;place-items:center;color:color-mix(in srgb,#fff 85%,transparent);font-size:11px;letter-spacing:.12em;text-transform:uppercase;position:relative}
+  .stylist .av::before{content:"";position:absolute;inset:10px;border:1px solid color-mix(in srgb,#fff 45%,transparent);border-radius:50%}
+  .stylist h3{font-size:26px;font-weight:500}
+  .stylist p{font-size:13px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:4px 0 0}
+
+  /* visit + book */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .hours .hrow{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .hours .hrow span:first-child{letter-spacing:.04em}
+  .bookbox{background:var(--ink);color:var(--bg);padding:clamp(30px,4vw,52px);border-radius:3px;text-align:center;position:relative}
+  .bookbox::before{content:"";position:absolute;inset:16px;border:1px solid color-mix(in srgb,var(--bg) 26%,transparent);pointer-events:none}
+  .bookbox h2{color:var(--bg);font-size:clamp(30px,4vw,46px);font-weight:400}
+  .bookbox p{color:color-mix(in srgb,var(--bg) 78%,transparent);margin:14px auto 26px;max-width:34ch}
+  .bookbox .btn-ink{background:var(--rose);color:var(--ink)}
+  .bookbox .btn-ink:hover{background:var(--bg)}
+
+  footer{border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-block:52px}
+  footer h4{font-family:"Cormorant";color:var(--ink);font-size:24px;font-weight:600;margin:0 0 10px}
+  footer a{color:inherit;text-decoration:none}
+  footer a:hover{color:var(--rose)}
+  .legal{border-top:1px solid var(--line);padding-block:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px}
+
+  .demobar{background:var(--ink);color:var(--bg);text-align:center;font-size:12.5px;letter-spacing:.04em;padding:9px 16px}
+  .demobar a{color:var(--rose);font-weight:400;text-decoration:none;text-transform:uppercase;letter-spacing:.1em;font-size:11.5px}
+
+  @media(max-width:880px){
+    .hero-inner,.visit{grid-template-columns:1fr}
+    .portrait{order:-1;max-width:420px;margin-inline:auto;width:100%}
+    .price{grid-template-columns:1fr;gap:0}
+    .gal{grid-template-columns:1fr 1fr}
+    .team{grid-template-columns:1fr;max-width:320px;margin-inline:auto}
+    .foot{grid-template-columns:1fr 1fr}
+    .burger{display:flex;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;background:none;border:0}
+    .burger span{width:22px;height:1.5px;background:var(--ink);display:block}
+    .navlinks{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+    .navtoggle:checked ~ .navlinks{display:flex}
+    .navlinks a{padding:16px clamp(22px,5vw,60px);width:100%;border-top:1px solid var(--line)}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="demobar">Concept demo by OBM&nbsp;Solutions — a sample salon site. <a href="../../work.html">← Back to portfolio</a></div>
+
+<nav>
+  <div class="wrap navbar">
+    <a class="brand" href="#top">Ivy <span class="amp">&amp;</span> Ash</a>
+    <input class="navtoggle" type="checkbox" id="nt" aria-label="Menu">
+    <label class="burger" for="nt"><span></span><span></span><span></span></label>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#team">The team</a>
+      <a href="#visit">Visit</a>
+      <a href="#book" class="btn btn-ink" style="padding:11px 22px">Book online</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Hair studio · Kalk Bay</span>
+      <div class="rule"></div>
+      <h1>Considered<br>hair, <em>quietly</em><br>done well.</h1>
+      <p>A small, calm studio by the sea. Unhurried appointments, colour that grows out beautifully, and a chair that feels like a pause in your week.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn btn-ink">Book your chair</a>
+        <a href="#services" class="btn btn-line">View services</a>
+      </div>
+    </div>
+    <div class="portrait"><small>Your studio photograph here</small></div>
+  </div>
+</header>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">Services &amp; pricing</span>
+      <div class="rule"></div>
+      <h2>The menu</h2>
+      <p>Guide prices below. Your stylist confirms everything at a complimentary consultation before we begin.</p>
+    </div>
+    <div class="price">
+      <div class="prow"><span class="pn">Cut &amp; finish</span><span class="dots"></span><span class="pp">R420</span></div>
+      <div class="prow"><span class="pn">Restyle</span><span class="dots"></span><span class="pp">R520</span></div>
+      <div class="prow"><span class="pn">Gloss &amp; tone</span><span class="dots"></span><span class="pp">R480</span></div>
+      <div class="prow"><span class="pn">Root colour</span><span class="dots"></span><span class="pp">R690</span></div>
+      <div class="prow"><span class="pn">Half-head foils</span><span class="dots"></span><span class="pp">R980</span></div>
+      <div class="prow"><span class="pn">Full balayage</span><span class="dots"></span><span class="pp">R1 450</span></div>
+      <div class="prow"><span class="pn">Bespoke treatment</span><span class="dots"></span><span class="pp">R320</span></div>
+      <div class="prow"><span class="pn">Blow-dry</span><span class="dots"></span><span class="pp">R280</span></div>
+    </div>
+    <p class="price-note">Bridal and event hair by quotation. Students 15% off Tue–Thu.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">The work</span><div class="rule"></div><h2>From the chair</h2></div>
+    <div class="gal">
+      <div class="t"><small>your photo</small></div>
+      <div class="t"><small>your photo</small></div>
+      <div class="t"><small>your photo</small></div>
+      <div class="t"><small>your photo</small></div>
+      <div class="t"><small>your photo</small></div>
+      <div class="t"><small>your photo</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="team">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Who you'll meet</span><div class="rule"></div><h2>The team</h2></div>
+    <div class="team">
+      <div class="stylist"><div class="av">portrait</div><h3>Ash Meyer</h3><p>Founder · Colour</p></div>
+      <div class="stylist"><div class="av">portrait</div><h3>Thandi Cele</h3><p>Senior Stylist</p></div>
+      <div class="stylist"><div class="av">portrait</div><h3>Rosa Adams</h3><p>Cutting Specialist</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap visit">
+    <div>
+      <span class="eyebrow">Find the studio</span>
+      <div class="rule"></div>
+      <h2 style="font-size:clamp(30px,4vw,48px);font-weight:400">Kalk Bay</h2>
+      <p style="color:var(--muted);margin:14px 0 24px">Above the main road, with the harbour below. Street parking on Main Road and a lot two doors down.</p>
+      <div class="hours">
+        <div class="hrow"><span>Tuesday – Friday</span><span>09:00 – 18:00</span></div>
+        <div class="hrow"><span>Saturday</span><span>08:00 – 15:00</span></div>
+        <div class="hrow"><span>Sunday – Monday</span><span>Closed</span></div>
+      </div>
+      <p style="margin-top:22px;font-size:15px">78 Main Road, Kalk Bay · <a href="tel:+27210000000" style="color:var(--rose);text-decoration:none">021 000 0000</a></p>
+    </div>
+    <div id="book">
+      <div class="bookbox">
+        <span class="eyebrow" style="color:var(--rose)">Appointments</span>
+        <h2 style="margin-top:12px">Book your chair</h2>
+        <p>Choose your stylist and time online, or send us a message and we'll find the right slot for you.</p>
+        <a href="#" class="btn btn-ink">Book online</a>
+        <div style="margin-top:14px"><a href="https://wa.me/27000000000" style="color:color-mix(in srgb,var(--bg) 80%,transparent);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none">or WhatsApp us →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <h4>Ivy &amp; Ash</h4>
+      <p style="margin:0;max-width:32ch">A calm hair studio in Kalk Bay. Cuts, colour and care — considered, and never rushed.</p>
+    </div>
+    <div>
+      <h4 style="font-size:18px">Visit</h4>
+      <p style="margin:0">78 Main Road<br>Kalk Bay, Cape Town<br>Tue–Sat</p>
+    </div>
+    <div>
+      <h4 style="font-size:18px">Reach us</h4>
+      <p style="margin:0"><a href="tel:+27210000000">021 000 0000</a><br><a href="#">hello@ivyandash.co.za</a><br><a href="#">Instagram</a></p>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© 2026 Ivy &amp; Ash Hair Studio (concept). A demo site.</span>
+    <span>Designed &amp; built by <a href="../../index.html" style="color:var(--rose);text-decoration:none">OBM Solutions</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

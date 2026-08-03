@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anchor Plumbing Co. — Fast, no-mess plumbers across Cape Town</title>
+<meta name="description" content="Anchor Plumbing Co. — licensed Cape Town plumbers. Burst pipes, blocked drains, geysers and leaks. Upfront pricing, 24/7 emergency callout.">
+<!-- CONCEPT DEMO built by OBM Solutions. Fictional business for portfolio purposes. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0e2a47;
+    --navy-900:#0a1f36;
+    --steel:#1b6ca8;
+    --orange:#ff7a00;
+    --orange-600:#e56d00;
+    --ice:#eef3f7;
+    --ink:#14202b;
+    --muted:#5a6b7a;
+    --line:#d6e0e8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#fff;color:var(--ink);font-family:"Barlow",system-ui,sans-serif;font-size:17px;line-height:1.6;text-wrap:pretty;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Barlow Condensed",sans-serif;font-weight:800;line-height:.98;letter-spacing:.005em;margin:0;text-transform:uppercase}
+  a{color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding-inline:clamp(20px,5vw,56px)}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;text-decoration:none;padding:15px 26px;border-radius:8px;transition:transform .12s ease,background .12s ease;font-family:"Barlow"}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-orange{background:var(--orange);color:#fff}
+  .btn-orange:hover{background:var(--orange-600)}
+  .btn-white{background:#fff;color:var(--navy)}
+  .btn-ghost{border:2px solid rgba(255,255,255,.5);color:#fff}
+  .eyebrow{font-family:"Barlow Condensed";font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+
+  /* top utility bar */
+  .util{background:var(--navy-900);color:#cfe0ee;font-size:14.5px}
+  .util .wrap{display:flex;justify-content:space-between;gap:12px;padding-block:9px;flex-wrap:wrap}
+  .util strong{color:#fff}
+  .util a{color:#fff;text-decoration:none;font-weight:700}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:40;background:var(--navy);color:#fff;box-shadow:0 2px 0 var(--orange)}
+  .navbar{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff}
+  .brand .mark{width:34px;height:34px;flex:none}
+  .brand b{font-family:"Barlow Condensed";font-weight:800;font-size:25px;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+  .brand small{display:block;font-size:11px;letter-spacing:.18em;color:#8fb3d0;font-weight:600}
+  .navlinks{display:flex;gap:26px;align-items:center}
+  .navlinks a{text-decoration:none;font-weight:600;font-size:15px;color:#dce8f2}
+  .navlinks a:hover{color:var(--orange)}
+  .navtoggle,.burger{display:none}
+
+  /* hero */
+  .hero{background:linear-gradient(180deg,var(--navy),var(--navy-900));color:#fff;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:160%;background:radial-gradient(circle,color-mix(in srgb,var(--steel) 55%,transparent),transparent 62%);pointer-events:none}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;padding-block:clamp(48px,7vw,86px)}
+  .badge{display:inline-flex;align-items:center;gap:9px;background:color-mix(in srgb,var(--orange) 18%,transparent);border:1px solid var(--orange);color:#ffd9b0;font-weight:600;font-size:14px;padding:8px 15px;border-radius:999px;margin-bottom:22px}
+  .badge .dot{width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px color-mix(in srgb,var(--orange) 30%,transparent)}
+  .hero h1{font-size:clamp(46px,7.4vw,92px);color:#fff}
+  .hero h1 span{color:var(--orange)}
+  .hero p{font-size:19px;max-width:46ch;color:#c6d6e4;margin:22px 0 30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .callcard{background:#fff;color:var(--navy);border-radius:14px;padding:26px;box-shadow:0 24px 50px -16px rgba(0,0,0,.5)}
+  .callcard .lbl{font-family:"Barlow Condensed";text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;font-size:15px}
+  .callcard .num{font-family:"Barlow Condensed";font-weight:800;font-size:44px;line-height:1;color:var(--navy);margin:6px 0 2px}
+  .callcard .num a{text-decoration:none}
+  .callcard .sub{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .trustrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .pill{font-size:12.5px;font-weight:600;background:var(--ice);color:var(--steel);padding:6px 11px;border-radius:6px}
+
+  /* strip of guarantees */
+  .strip{background:var(--orange);color:#fff}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-block:22px;text-align:center}
+  .strip .g b{font-family:"Barlow Condensed";font-size:30px;display:block;line-height:1}
+  .strip .g span{font-size:13.5px;opacity:.95}
+
+  section{padding-block:clamp(52px,7vw,88px)}
+  .sec-head{max-width:60ch;margin-bottom:40px}
+  .sec-head h2{font-size:clamp(34px,5vw,58px)}
+  .sec-head p{color:var(--muted);margin:14px 0 0;font-size:17px}
+
+  /* services */
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:26px;background:#fff;transition:box-shadow .15s ease,transform .15s ease}
+  .card:hover{box-shadow:0 18px 40px -22px rgba(14,42,71,.4);transform:translateY(-3px)}
+  .card .ico{width:48px;height:48px;border-radius:10px;background:var(--ice);display:grid;place-items:center;margin-bottom:16px}
+  .card h3{font-size:26px;color:var(--navy)}
+  .card p{font-size:15px;color:var(--muted);margin:8px 0 0}
+
+  /* areas */
+  .areas{background:var(--ice)}
+  .area-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+  .suburbs{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+  .suburbs span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:14px;font-weight:500}
+  .maparea{border-radius:16px;min-height:300px;background:
+     linear-gradient(160deg,color-mix(in srgb,var(--steel) 22%,#fff),#fff),
+     repeating-linear-gradient(90deg,transparent 0 44px,color-mix(in srgb,var(--navy) 8%,transparent) 44px 45px),
+     repeating-linear-gradient(0deg,transparent 0 44px,color-mix(in srgb,var(--navy) 8%,transparent) 44px 45px);
+     border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:14px}
+
+  /* why */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .why .item{padding:24px;border-left:3px solid var(--orange);background:linear-gradient(90deg,var(--ice),transparent)}
+  .why h3{font-size:24px;color:var(--navy)}
+  .why p{font-size:15px;color:var(--muted);margin:6px 0 0}
+
+  /* reviews */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .quote{border:1px solid var(--line);border-radius:14px;padding:24px}
+  .stars{color:var(--orange);font-size:16px;letter-spacing:2px}
+  .quote p{font-size:15.5px;margin:12px 0 14px}
+  .quote .who{font-weight:700;font-size:14px}
+  .quote .who span{color:var(--muted);font-weight:400}
+
+  /* quote CTA */
+  .quotecta{background:linear-gradient(180deg,var(--navy),var(--navy-900));color:#fff;border-radius:20px;padding:clamp(32px,5vw,60px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+  .quotecta::after{content:"";position:absolute;right:-8%;bottom:-40%;width:50%;height:150%;background:radial-gradient(circle,color-mix(in srgb,var(--orange) 40%,transparent),transparent 62%)}
+  .quotecta>*{position:relative;z-index:2}
+  .quotecta h2{font-size:clamp(32px,4.6vw,54px);color:#fff}
+  .quotecta p{color:#c6d6e4;margin:14px 0 0;max-width:42ch}
+  .qform{background:#fff;border-radius:14px;padding:22px;display:grid;gap:12px}
+  .qform label{font-size:13px;font-weight:700;color:var(--navy);font-family:"Barlow Condensed";text-transform:uppercase;letter-spacing:.08em}
+  .qform input,.qform select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:15px;margin-top:4px}
+  .qform .btn{width:100%;justify-content:center}
+
+  footer{background:var(--navy-900);color:#a9c1d6;font-size:14.5px}
+  .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px;padding-block:52px}
+  footer h4{font-family:"Barlow Condensed";color:#fff;font-size:22px;text-transform:uppercase;margin:0 0 12px}
+  footer a{color:inherit;text-decoration:none}
+  footer a:hover{color:var(--orange)}
+  .legal{border-top:1px solid rgba(255,255,255,.12);padding-block:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px}
+
+  .demobar{background:var(--orange);color:#fff;text-align:center;font-size:13px;font-weight:500;padding:8px 16px}
+  .demobar a{color:#fff;font-weight:700}
+
+  @media(max-width:900px){
+    .hero-inner,.area-grid,.quotecta{grid-template-columns:1fr}
+    .svc,.why,.reviews{grid-template-columns:1fr 1fr}
+    .strip .wrap{grid-template-columns:1fr 1fr;gap:16px}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .svc,.why,.reviews{grid-template-columns:1fr}
+    .navbar{height:64px}
+    .burger{display:flex;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;background:none;border:0}
+    .burger span{width:22px;height:2px;background:#fff;display:block}
+    .navlinks{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--navy);display:none}
+    .navtoggle:checked ~ .navlinks{display:flex}
+    .navlinks a{padding:15px clamp(20px,5vw,56px);width:100%;border-top:1px solid rgba(255,255,255,.1)}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.btn:hover,.card:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="demobar">Concept demo by <strong>OBM&nbsp;Solutions</strong> — a sample plumbing site. <a href="../../work.html">← Back to portfolio</a></div>
+
+<div class="util"><div class="wrap"><span><strong>24/7 emergency callout</strong> across the Cape Peninsula</span><span>Call now: <a href="tel:+27210000000">021 000 0000</a></span></div></div>
+
+<nav>
+  <div class="wrap navbar">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#ff7a00"/><path d="M18 7v22M11 12h14M13 25a5 5 0 0 0 10 0" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <span><b>Anchor Plumbing</b><small>CAPE TOWN · EST. 2011</small></span>
+    </a>
+    <input class="navtoggle" type="checkbox" id="nt" aria-label="Menu">
+    <label class="burger" for="nt"><span></span><span></span><span></span></label>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#areas">Areas</a>
+      <a href="#why">Why us</a>
+      <a href="#quote" class="btn btn-orange" style="padding:10px 18px">Get a quote</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="badge"><span class="dot"></span>Average response: under 60 minutes</span>
+      <h1>Burst pipe?<br>Blocked drain?<br><span>We're on our way.</span></h1>
+      <p>Licensed Cape Town plumbers for homes and businesses. Honest upfront pricing, no mess left behind, and a real person who answers the phone.</p>
+      <div class="hero-cta">
+        <a href="tel:+27210000000" class="btn btn-orange">Call 021 000 0000</a>
+        <a href="https://wa.me/27000000000" class="btn btn-ghost">WhatsApp us</a>
+      </div>
+    </div>
+    <div class="callcard">
+      <div class="lbl">Emergency line — 24/7</div>
+      <div class="num"><a href="tel:+27210000000">021 000 0000</a></div>
+      <div class="sub">Or request a callback and we'll phone you within 15 minutes.</div>
+      <a href="#quote" class="btn btn-orange" style="width:100%;justify-content:center">Request a callback</a>
+      <div class="trustrow">
+        <span class="pill">✓ Licensed &amp; insured</span>
+        <span class="pill">✓ Upfront quotes</span>
+        <span class="pill">✓ 12-month guarantee</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="g"><b>13+</b><span>Years on the tools</span></div>
+    <div class="g"><b>4.9★</b><span>From 200+ Google reviews</span></div>
+    <div class="g"><b>&lt;60min</b><span>Average callout time</span></div>
+    <div class="g"><b>R0</b><span>Callout fee on booked jobs</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we fix</span>
+      <h2>Plumbing done right, first time</h2>
+      <p>From a dripping tap to a full re-pipe — same careful work, whether it's your home or your business.</p>
+    </div>
+    <div class="svc">
+      <div class="card"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3c3 4 6 6 6 10a6 6 0 1 1-12 0c0-4 3-6 6-10Z" stroke="#1b6ca8" stroke-width="2"/></svg></div><h3>Leaks &amp; burst pipes</h3><p>Traced fast with no unnecessary breaking of walls. Fixed and pressure-tested before we leave.</p></div>
+      <div class="card"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 8h16M7 8v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8M10 4h4" stroke="#1b6ca8" stroke-width="2"/></svg></div><h3>Blocked drains</h3><p>High-pressure jetting and camera inspection so the blockage is gone — not just pushed along.</p></div>
+      <div class="card"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="16" rx="2" stroke="#1b6ca8" stroke-width="2"/><path d="M9 9h6M9 13h6" stroke="#1b6ca8" stroke-width="2"/></svg></div><h3>Geysers</h3><p>Repairs, replacements and timers. Solar and heat-pump ready. All work certified.</p></div>
+      <div class="card"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 20V10l6-5 6 5v10" stroke="#1b6ca8" stroke-width="2"/><path d="M10 20v-5h4v5" stroke="#1b6ca8" stroke-width="2"/></svg></div><h3>Bathroom renovations</h3><p>Full plumbing for new bathrooms and kitchens, coordinated with your tiler and builder.</p></div>
+      <div class="card"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="#1b6ca8" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="#1b6ca8" stroke-width="2"/></svg></div><h3>Compliance certificates</h3><p>Plumbing certificates of compliance for property sales and transfers. Sorted quickly.</p></div>
+      <div class="card"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 7h18v10H3zM7 7V5h10v2" stroke="#1b6ca8" stroke-width="2"/></svg></div><h3>Commercial contracts</h3><p>Scheduled maintenance for restaurants, offices and body corporates. One number, always answered.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap area-grid">
+    <div>
+      <span class="eyebrow">Where we work</span>
+      <h2 style="font-size:clamp(32px,4.6vw,52px);margin-top:10px">Across the Cape Peninsula</h2>
+      <p style="color:var(--muted);margin-top:14px">Based in Pinelands, on the road daily from the Atlantic Seaboard to the Southern Suburbs. If your suburb isn't listed, call us — we probably cover it.</p>
+      <div class="suburbs">
+        <span>Sea Point</span><span>Green Point</span><span>City Bowl</span><span>Observatory</span><span>Pinelands</span><span>Rondebosch</span><span>Claremont</span><span>Kenilworth</span><span>Wynberg</span><span>Constantia</span><span>Muizenberg</span><span>Table View</span>
+      </div>
+    </div>
+    <div class="maparea">[ Service-area map on the live site ]</div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why Anchor</span><h2>No surprises, no mess</h2></div>
+    <div class="why">
+      <div class="item"><h3>The price we quote</h3><p>You approve the cost before we start. No jobs balloon halfway through.</p></div>
+      <div class="item"><h3>We clean up</h3><p>Boots off, drop sheets down, site left cleaner than we found it. Every time.</p></div>
+      <div class="item"><h3>A real guarantee</h3><p>Every repair is backed for 12 months. If it goes again, we come back free.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="reviews">
+      <div class="quote"><div class="stars">★★★★★</div><p>"Geyser burst at 6am, Anchor had someone here by 7. Clean, polite, fair price. Saved our ceiling."</p><div class="who">Nomsa D. <span>· Rondebosch</span></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"Quoted upfront, stuck to it, and actually cleaned up after. Rare these days. Our go-to now."</p><div class="who">James P. <span>· Sea Point</span></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"They maintain the plumbing for our restaurant. One call, always sorted same day."</p><div class="who">The Vine Bistro <span>· City Bowl</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="wrap">
+    <div class="quotecta">
+      <div>
+        <span class="eyebrow" style="color:#ffd9b0">Free quote</span>
+        <h2>Tell us what's wrong</h2>
+        <p>Send a few details and we'll come back with an honest estimate — usually within the hour during work times. Emergency? Call the line, don't wait for the form.</p>
+        <div style="margin-top:22px"><a href="tel:+27210000000" class="btn btn-orange">Or call 021 000 0000</a></div>
+      </div>
+      <div class="qform">
+        <div><label>Your name</label><input type="text" placeholder="First and last"></div>
+        <div><label>Phone</label><input type="tel" placeholder="072 000 0000"></div>
+        <div><label>What do you need?</label>
+          <select><option>Choose a service…</option><option>Leak / burst pipe</option><option>Blocked drain</option><option>Geyser</option><option>Renovation</option><option>Compliance certificate</option><option>Something else</option></select>
+        </div>
+        <button type="button" class="btn btn-orange">Request my quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <h4>Anchor Plumbing Co.</h4>
+      <p style="margin:0;max-width:36ch">Licensed plumbers for the Cape Peninsula. Homes, businesses and body corporates since 2011.</p>
+    </div>
+    <div>
+      <h4 style="font-size:16px">Contact</h4>
+      <p style="margin:0"><a href="tel:+27210000000">021 000 0000</a><br><a href="#">hello@anchorplumbing.co.za</a><br>Pinelands, Cape Town</p>
+    </div>
+    <div>
+      <h4 style="font-size:16px">Hours</h4>
+      <p style="margin:0">Mon–Fri 07:00–17:00<br>Sat 08:00–13:00<br><strong style="color:#fff">Emergencies 24/7</strong></p>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© 2026 Anchor Plumbing Co. (concept). A demo site.</span>
+    <span>Designed &amp; built by <a href="../../index.html" style="color:var(--orange);text-decoration:none;font-weight:700">OBM Solutions</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

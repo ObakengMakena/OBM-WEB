@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fig &amp; Flame Kitchen — Wood-fired neighbourhood dining in Cape Town</title>
+<meta name="description" content="Fig &amp; Flame Kitchen — a wood-fired neighbourhood restaurant in Cape Town. Seasonal plates, natural wine, book a table tonight.">
+<!-- CONCEPT DEMO built by OBM Solutions. Fictional business for portfolio purposes. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fig:#38202b;        /* deep fig */
+    --fig-800:#2a1720;
+    --flame:#e4572e;      /* flame orange */
+    --flame-600:#c8431f;
+    --butter:#f2c14e;     /* warm butter */
+    --olive:#7c8a4e;      /* herb */
+    --paper:#fbf6ee;      /* warm off-white */
+    --paper-2:#f4ead9;
+    --ink:#2b2118;
+    --muted:#6a5f52;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"DM Sans",system-ui,sans-serif;font-size:17px;line-height:1.6;
+    text-wrap:pretty;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.05;letter-spacing:-0.01em;margin:0}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(20px,5vw,56px)}
+  .btn{display:inline-block;font-weight:700;font-size:15px;text-decoration:none;padding:14px 24px;border-radius:999px;transition:transform .15s ease,background .15s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-flame{background:var(--flame);color:#fff}
+  .btn-flame:hover{background:var(--flame-600)}
+  .btn-ghost{border:1.5px solid currentColor;color:var(--paper)}
+  .eyebrow{font-family:"DM Sans";font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--flame)}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+  .navbar{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:"Fraunces";font-weight:600;font-size:22px;letter-spacing:-.01em;text-decoration:none;color:var(--fig);display:flex;align-items:center;gap:10px}
+  .brand .mark{width:26px;height:26px;flex:none}
+  .navlinks{display:flex;gap:28px;align-items:center}
+  .navlinks a{text-decoration:none;font-weight:500;font-size:15px;color:var(--ink)}
+  .navlinks a:hover{color:var(--flame)}
+  .navtoggle,.burger{display:none}
+
+  /* HERO */
+  .hero{background:var(--fig);color:var(--paper);position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:
+     radial-gradient(circle at 82% 18%, color-mix(in srgb,var(--flame) 42%,transparent), transparent 46%),
+     radial-gradient(circle at 12% 88%, color-mix(in srgb,var(--olive) 34%,transparent), transparent 42%);
+     pointer-events:none}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:clamp(56px,8vw,104px)}
+  .hero h1{font-size:clamp(44px,7vw,86px);color:var(--paper)}
+  .hero h1 em{font-style:italic;color:var(--butter)}
+  .hero p{font-size:19px;max-width:44ch;color:color-mix(in srgb,var(--paper) 82%,transparent);margin:24px 0 34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .openchip{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:500;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 30%,transparent);padding:8px 15px;border-radius:999px;margin-bottom:26px}
+  .openchip .dot{width:9px;height:9px;border-radius:50%;background:#6ee7a0;box-shadow:0 0 0 4px color-mix(in srgb,#6ee7a0 25%,transparent)}
+  .platter{aspect-ratio:1/1;border-radius:50%;background:
+      radial-gradient(circle at 38% 34%, var(--butter), transparent 40%),
+      radial-gradient(circle at 68% 66%, var(--flame), transparent 46%),
+      linear-gradient(145deg,var(--olive),var(--fig-800));
+      box-shadow:0 30px 70px -20px rgba(0,0,0,.5), inset 0 0 0 12px color-mix(in srgb,var(--paper) 8%,transparent);
+      position:relative}
+  .platter span{position:absolute;inset:0;display:grid;place-items:center;font-family:"Fraunces";font-style:italic;font-size:15px;color:color-mix(in srgb,var(--paper) 78%,transparent);text-align:center;padding:0 22%}
+
+  /* SECTION SHELL */
+  section{padding-block:clamp(56px,8vw,96px)}
+  .sec-head{max-width:60ch;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(30px,4.4vw,50px)}
+  .sec-head p{color:var(--muted);margin:16px 0 0}
+
+  /* MENU */
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 56px}
+  .dish{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px dashed color-mix(in srgb,var(--ink) 22%,transparent)}
+  .dish .d-name{font-family:"Fraunces";font-weight:600;font-size:20px}
+  .dish .d-desc{font-size:14.5px;color:var(--muted);margin-top:3px;max-width:40ch}
+  .dish .d-price{font-family:"Fraunces";font-weight:600;font-size:19px;color:var(--flame);white-space:nowrap}
+  .menu-note{margin-top:34px;font-size:14px;color:var(--muted)}
+
+  /* STORY band */
+  .band{background:var(--paper-2)}
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .frame{border-radius:14px;aspect-ratio:4/3;position:relative;overflow:hidden;
+    background:linear-gradient(150deg,var(--olive),var(--fig));display:grid;place-items:center}
+  .frame small{color:color-mix(in srgb,#fff 80%,transparent);font-size:12.5px;letter-spacing:.04em;border:1px solid color-mix(in srgb,#fff 40%,transparent);padding:6px 12px;border-radius:999px}
+
+  /* GALLERY */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .gal .tile{aspect-ratio:3/4;border-radius:10px;position:relative;overflow:hidden;display:grid;place-items:end;padding:12px}
+  .gal .tile:nth-child(1){background:linear-gradient(160deg,var(--flame),var(--fig))}
+  .gal .tile:nth-child(2){background:linear-gradient(160deg,var(--butter),var(--olive))}
+  .gal .tile:nth-child(3){background:linear-gradient(160deg,var(--olive),var(--fig-800))}
+  .gal .tile:nth-child(4){background:linear-gradient(160deg,var(--fig),var(--flame-600))}
+  .gal .tile small{font-size:11px;color:color-mix(in srgb,#fff 78%,transparent)}
+
+  /* VISIT */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .info-row{display:flex;gap:14px;padding:16px 0;border-top:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
+  .info-row:first-of-type{border-top:0}
+  .info-row .k{font-weight:700;min-width:104px}
+  .map{border-radius:14px;min-height:260px;background:
+     linear-gradient(0deg,color-mix(in srgb,var(--olive) 30%,var(--paper)),var(--paper)),
+     repeating-linear-gradient(90deg,transparent 0 38px,color-mix(in srgb,var(--ink) 7%,transparent) 38px 39px),
+     repeating-linear-gradient(0deg,transparent 0 38px,color-mix(in srgb,var(--ink) 7%,transparent) 38px 39px);
+     display:grid;place-items:center;color:var(--muted);font-size:13px;border:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
+
+  /* BOOK CTA */
+  .book{background:var(--fig);color:var(--paper);border-radius:20px;padding:clamp(32px,5vw,64px);text-align:center;position:relative;overflow:hidden}
+  .book::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 120%,color-mix(in srgb,var(--flame) 40%,transparent),transparent 55%)}
+  .book>*{position:relative;z-index:2}
+  .book h2{font-size:clamp(30px,4.4vw,52px);color:var(--paper)}
+  .book p{color:color-mix(in srgb,var(--paper) 82%,transparent);max-width:46ch;margin:16px auto 30px}
+
+  footer{background:var(--fig-800);color:color-mix(in srgb,var(--paper) 72%,transparent);font-size:14px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-block:52px}
+  footer h4{font-family:"Fraunces";color:var(--paper);font-size:20px;margin:0 0 10px}
+  footer a{color:inherit;text-decoration:none}
+  footer a:hover{color:var(--butter)}
+  .legal{border-top:1px solid color-mix(in srgb,var(--paper) 14%,transparent);padding-block:20px;font-size:12.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* demo ribbon */
+  .demobar{background:var(--flame);color:#fff;text-align:center;font-size:13px;font-weight:500;padding:8px 16px}
+  .demobar a{color:#fff;font-weight:700}
+
+  @media(max-width:860px){
+    .hero-inner,.story,.visit,.menu-grid{grid-template-columns:1fr}
+    .platter{max-width:360px;margin-inline:auto;order:-1}
+    .gal{grid-template-columns:1fr 1fr}
+    .foot{grid-template-columns:1fr 1fr}
+    .burger{display:flex;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;background:none;border:0}
+    .burger span{width:22px;height:2px;background:var(--fig);display:block}
+    .navlinks{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);display:none}
+    .navtoggle:checked ~ .navlinks{display:flex}
+    .navlinks a{padding:15px clamp(20px,5vw,56px);width:100%;border-top:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="demobar">Concept demo by <strong>OBM&nbsp;Solutions</strong> — a sample restaurant site. <a href="../../work.html">← Back to portfolio</a></div>
+
+<nav>
+  <div class="wrap navbar">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3c3 5 7 6 7 12a7 7 0 1 1-14 0c0-3 1-4 2-6 1 3 3 3 3 1 0-3-1-5 2-7Z" fill="#e4572e"/><circle cx="16" cy="18" r="3" fill="#f2c14e"/></svg>
+      Fig &amp; Flame
+    </a>
+    <input class="navtoggle" type="checkbox" id="nt" aria-label="Menu">
+    <label class="burger" for="nt"><span></span><span></span><span></span></label>
+    <div class="navlinks">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our story</a>
+      <a href="#visit">Visit</a>
+      <a href="#book" class="btn btn-flame" style="padding:10px 18px">Book a table</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="openchip"><span class="dot"></span>Kitchen open tonight till 22:00</span>
+      <h1>Wood-fired.<br>Grown nearby.<br><em>Eaten slowly.</em></h1>
+      <p>A small neighbourhood kitchen in Sea Point. Seasonal plates from the fire, natural wine, and a table that's yours for the whole evening.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn btn-flame">Book a table</a>
+        <a href="#menu" class="btn btn-ghost">See the menu</a>
+      </div>
+    </div>
+    <div class="platter"><span>Your hero photograph sits here — the pass, the fire, a full table.</span></div>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">This week's fire</span>
+      <h2>A short menu, changed often</h2>
+      <p>We cook what the market gives us, so this shifts weekly. Here's what's on right now.</p>
+    </div>
+    <div class="menu-grid">
+      <div>
+        <div class="dish"><div><div class="d-name">Flame-charred aubergine</div><div class="d-desc">Burnt honey, dukkah, labneh</div></div><div class="d-price">R95</div></div>
+        <div class="dish"><div><div class="d-name">Wood-oven flatbread</div><div class="d-desc">Confit garlic, rosemary, olive oil</div></div><div class="d-price">R70</div></div>
+        <div class="dish"><div><div class="d-name">Line fish of the day</div><div class="d-desc">Fennel, brown butter, lemon</div></div><div class="d-price">R210</div></div>
+        <div class="dish"><div><div class="d-name">Dry-aged sirloin</div><div class="d-desc">Coal-roasted, bone marrow salsa</div></div><div class="d-price">R265</div></div>
+      </div>
+      <div>
+        <div class="dish"><div><div class="d-name">Slow lamb shoulder</div><div class="d-desc">For two — smoked over vine cuttings</div></div><div class="d-price">R420</div></div>
+        <div class="dish"><div><div class="d-name">Charred greens</div><div class="d-desc">Almond, chilli, preserved lemon</div></div><div class="d-price">R85</div></div>
+        <div class="dish"><div><div class="d-name">Burnt basque cheesecake</div><div class="d-desc">Vanilla, sea salt</div></div><div class="d-price">R80</div></div>
+        <div class="dish"><div><div class="d-name">Natural wine, by the glass</div><div class="d-desc">Ask your server — always three open</div></div><div class="d-price">from R65</div></div>
+      </div>
+    </div>
+    <p class="menu-note">Dietary needs? Tell us when you book — most plates flex vegetarian or gluten-free.</p>
+  </div>
+</section>
+
+<section class="band" id="story">
+  <div class="wrap story">
+    <div class="frame"><small>Your photo — chef at the pass</small></div>
+    <div>
+      <span class="eyebrow">Since 2019</span>
+      <h2 style="font-size:clamp(28px,4vw,44px);margin-top:10px">One fire, one long table, no rush</h2>
+      <p style="color:var(--muted);margin-top:18px">Fig &amp; Flame started as a supper club in a friend's courtyard. The idea never changed: cook simply over live fire, pour honest wine, and give people a reason to stay an extra hour.</p>
+      <p style="color:var(--muted);margin-top:14px">Everything comes off one wood-fired oven. Produce is from growers we know by name. If it's not in season, it's not on the menu.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">The room</span><h2>A look around</h2></div>
+    <div class="gal">
+      <div class="tile"><small>your photo</small></div>
+      <div class="tile"><small>your photo</small></div>
+      <div class="tile"><small>your photo</small></div>
+      <div class="tile"><small>your photo</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit">
+  <div class="wrap visit">
+    <div>
+      <span class="eyebrow">Find us</span>
+      <h2 style="font-size:clamp(28px,4vw,44px);margin-top:10px">Visit the kitchen</h2>
+      <div style="margin-top:26px">
+        <div class="info-row"><span class="k">Where</span><span>142 Regent Road, Sea Point, Cape Town</span></div>
+        <div class="info-row"><span class="k">Dinner</span><span>Tue–Sun, 17:30 till late · closed Mondays</span></div>
+        <div class="info-row"><span class="k">Lunch</span><span>Sat &amp; Sun, 12:00–15:00</span></div>
+        <div class="info-row"><span class="k">Call</span><span><a href="tel:+27210000000" style="color:var(--flame);text-decoration:none;font-weight:700">021 000 0000</a></span></div>
+      </div>
+    </div>
+    <div class="map">[ Google map embeds here on the live site ]</div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="book">
+      <span class="eyebrow" style="color:var(--butter)">Bookings</span>
+      <h2>Hold a table for tonight</h2>
+      <p>Parties up to 6 book straight through. For 7 or more, drop us a message and we'll set the long table.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="#" class="btn btn-flame">Book online</a>
+        <a href="https://wa.me/27000000000" class="btn btn-ghost">WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <h4>Fig &amp; Flame Kitchen</h4>
+      <p style="margin:0;max-width:34ch">Wood-fired neighbourhood dining. Sea Point, Cape Town.</p>
+    </div>
+    <div>
+      <h4 style="font-size:15px">Visit</h4>
+      <p style="margin:0">Tue–Sun from 17:30<br>142 Regent Road<br>Sea Point</p>
+    </div>
+    <div>
+      <h4 style="font-size:15px">Reach us</h4>
+      <p style="margin:0"><a href="tel:+27210000000">021 000 0000</a><br><a href="#">hello@figandflame.co.za</a><br><a href="#">Instagram</a></p>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© 2026 Fig &amp; Flame Kitchen (concept). A demo site.</span>
+    <span>Designed &amp; built by <a href="../../index.html" style="color:var(--butter);text-decoration:none;font-weight:700">OBM Solutions</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
