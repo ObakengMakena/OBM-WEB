@@ -23,22 +23,81 @@
   .navlinks { display: flex; gap: clamp(14px,2vw,28px); align-items: center; margin-right: clamp(14px,2vw,28px); }
   .navtoggle { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
   .navburger { display: none; }
-  .field { display: block; margin: 0 0 22px; }
-  .field > span { display: block; font-weight: 600; font-size: 15px; margin: 0 0 8px; }
+
+  /* ---- layout ---- */
+  .paygrid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px,4vw,56px); align-items: start; }
+  @media (max-width: 900px) { .paygrid { grid-template-columns: 1fr; } }
+
+  /* ---- steps ---- */
+  .step { border-top: 2px solid var(--color-divider); padding: 30px 0 6px; }
+  .step.first { border-top: 0; padding-top: 0; }
+  .step-no {
+    font-family: var(--font-heading); font-weight: 800; font-size: 12px; letter-spacing: 0.14em;
+    color: var(--color-accent); display: block; margin: 0 0 6px;
+  }
+  .step-title { font-family: var(--font-heading); font-weight: 800; font-size: clamp(19px,2vw,22px); line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 22px; }
+
+  /* ---- fields ---- */
+  .field { display: block; margin: 0 0 20px; }
+  .field > span.lbl { display: block; font-weight: 600; font-size: 14.5px; margin: 0 0 8px; }
+  .field .opt { font-weight: 400; color: color-mix(in srgb, var(--color-text) 52%, transparent); }
   .field input, .field select {
     width: 100%; box-sizing: border-box; font: inherit; font-size: 16px;
-    padding: 13px 14px; border: 2px solid var(--color-divider); border-radius: 8px;
+    padding: 14px 15px; border: 2px solid var(--color-divider); border-radius: 10px;
     background: var(--color-bg); color: var(--color-text);
+    transition: border-color .15s ease, box-shadow .15s ease;
   }
-  .field input:focus, .field select:focus { outline: none; border-color: var(--color-accent); }
-  .field small { display: block; margin-top: 6px; font-size: 13px; color: color-mix(in srgb, var(--color-text) 60%, transparent); }
-  .agree { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 24px; margin: 4px 0 26px; }
-  .agree input { margin-top: 4px; width: 18px; height: 18px; flex: 0 0 auto; }
-  .paybtn { font-size: 16px; padding: 14px 26px; width: 100%; border: 0; cursor: pointer; }
-  .methods { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
-  .methods span { font-size: 12.5px; letter-spacing: 0.02em; padding: 6px 12px; border: 1.5px solid var(--color-divider); border-radius: 30px; color: color-mix(in srgb, var(--color-text) 72%, transparent); }
-  .secure { display: flex; gap: 10px; align-items: flex-start; margin: 22px 0 0; font-size: 13.5px; line-height: 22px; color: color-mix(in srgb, var(--color-text) 66%, transparent); }
-  .panel { border: 2px solid var(--color-divider); border-radius: 14px; padding: clamp(22px,4vw,36px); }
+  .field input:hover, .field select:hover { border-color: color-mix(in srgb, var(--color-text) 30%, transparent); }
+  .field input:focus-visible, .field select:focus-visible {
+    outline: none; border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 18%, transparent);
+  }
+  .field small { display: block; margin-top: 7px; font-size: 13px; line-height: 20px; color: color-mix(in srgb, var(--color-text) 58%, transparent); }
+  .amountwrap { position: relative; display: block; }
+  .amountwrap .zar {
+    position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+    font-weight: 700; font-size: 16px; color: color-mix(in srgb, var(--color-text) 55%, transparent); pointer-events: none;
+  }
+  .amountwrap input { padding-left: 40px; font-variant-numeric: tabular-nums; }
+
+  /* ---- summary panel ---- */
+  .summary {
+    position: sticky; top: 92px;
+    background: var(--color-text); color: var(--color-bg);
+    border-radius: 16px; padding: clamp(24px,3vw,32px);
+    box-shadow: 0 24px 60px -34px rgba(0,0,0,.65);
+  }
+  @media (max-width: 900px) { .summary { position: static; } }
+  .summary .cap { display: block; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; opacity: .62; margin: 0 0 18px; }
+  .summary .amt {
+    font-family: var(--font-heading); font-weight: 800; font-size: clamp(38px,5.2vw,52px); line-height: 1.02;
+    letter-spacing: -0.03em; margin: 0; font-variant-numeric: tabular-nums;
+  }
+  .summary .amt.muted { opacity: .38; }
+  .summary .item { font-size: 14.5px; line-height: 23px; margin: 14px 0 0; opacity: .82; }
+  .summary hr { border: 0; height: 1px; background: rgba(255,255,255,.16); margin: 22px 0; }
+  .summary .row { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 21px; opacity: .78; margin: 0 0 10px; }
+  .summary .row:last-of-type { margin-bottom: 0; }
+  .summary .row .ic { flex: none; width: 16px; text-align: center; opacity: .85; }
+  .summary a { color: var(--color-bg); text-decoration: underline; }
+
+  .agree { display: flex; gap: 11px; align-items: flex-start; font-size: 13.5px; line-height: 21px; margin: 0 0 18px; opacity: .88; }
+  .agree input { margin-top: 3px; width: 17px; height: 17px; flex: none; accent-color: var(--color-accent); }
+  .paybtn {
+    width: 100%; font-family: inherit; font-size: 16px; font-weight: 700; padding: 16px 24px; border: 0; border-radius: 10px;
+    background: var(--color-accent); color: #fff; cursor: pointer;
+    transition: transform .14s ease, filter .14s ease;
+  }
+  .paybtn:hover { filter: brightness(1.07); transform: translateY(-1px); }
+  .paybtn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+  .methods { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 0; }
+  .methods span {
+    font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600;
+    padding: 6px 11px; border: 1px solid rgba(255,255,255,.22); border-radius: 6px; opacity: .75;
+  }
+
+  @media (prefers-reduced-motion: reduce) { .paybtn { transition: none; } }
   @media (max-width: 860px) {
     .navburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; margin-right: 4px; cursor: pointer; }
     .navburger span { display: block; width: 22px; height: 2px; background: var(--color-text); }
@@ -67,71 +126,96 @@
   <a class="btn btn-primary" href="https://wa.me/27793108775" style="white-space:nowrap">WhatsApp us</a>
 </nav>
 
-<section style="max-width:820px;margin:0 auto;padding:clamp(48px,7vw,84px) clamp(20px,5vw,72px) 30px">
+<section style="max-width:1120px;margin:0 auto;padding:clamp(44px,6vw,72px) clamp(20px,5vw,72px) 26px">
   <span style="display:block;font-size:13px;line-height:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Payments</span>
   <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1.06;letter-spacing:-0.02em;margin:0 0 0 -0.04em">Pay for your project</h1>
-  <p style="font-size:17px;line-height:28px;margin:24px 0 0;max-width:60ch;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Pay securely by card or Instant EFT through Payfast. Projects run on a 50% deposit to begin, with the balance due on final delivery. Enter the amount from your quote or invoice below — everything is in South African Rand.</p>
+  <p style="font-size:17px;line-height:29px;margin:22px 0 0;max-width:56ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Card, Instant EFT, SnapScan or Zapper — handled securely by Payfast. Projects run on a 50% deposit to begin, with the balance due on final delivery.</p>
 </section>
 
-<section style="max-width:820px;margin:0 auto;padding:10px clamp(20px,5vw,72px) 80px">
-  <div class="panel">
-    <form action="/api/pay" method="post">
-      <label class="field">
-        <span>What are you paying for?</span>
-        <select name="item_name" required="required">
-          <option value="" disabled="disabled" selected="selected">Choose one…</option>
-          <option value="OBM Solutions — Starter website (deposit)">Starter website — 50% deposit to begin</option>
-          <option value="OBM Solutions — Growth website (deposit)">Growth website — 50% deposit to begin</option>
-          <option value="OBM Solutions — Final balance">Final balance (before launch)</option>
-          <option value="OBM Solutions — Website care plan (monthly)">Website care plan — monthly</option>
-          <option value="OBM Solutions — Google Business Profile setup">Google Business Profile setup</option>
-          <option value="OBM Solutions — Payment as quoted">Something else (as per your quote)</option>
-        </select>
-      </label>
+<section style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 90px">
+  <form action="/api/pay" method="post" class="paygrid">
 
-      <label class="field">
-        <span>Amount (ZAR)</span>
-        <input type="number" name="amount" min="5" step="0.01" inputmode="decimal" placeholder="e.g. 3500.00" required="required">
-        <small>Enter the exact amount from your quote or invoice (minimum R5.00).</small>
-      </label>
+    <div>
+      <div class="step first">
+        <span class="step-no">01</span>
+        <h2 class="step-title">What you're paying for</h2>
 
-      <label class="field">
-        <span>Your name or business</span>
-        <input type="text" name="name_first" maxlength="100" autocomplete="name" required="required">
-      </label>
+        <label class="field">
+          <span class="lbl">Package or service</span>
+          <select name="item_name" required="required" onChange="{{ onItem }}">
+            <option value="" disabled="disabled" selected="selected">Choose one…</option>
+            <option value="OBM Solutions — Starter website (deposit)">Starter website — 50% deposit to begin</option>
+            <option value="OBM Solutions — Growth website (deposit)">Growth website — 50% deposit to begin</option>
+            <option value="OBM Solutions — Premium website (deposit)">Premium website — 50% deposit to begin</option>
+            <option value="OBM Solutions — Final balance">Final balance before launch</option>
+            <option value="OBM Solutions — Website care plan (monthly)">Website care plan — monthly</option>
+            <option value="OBM Solutions — Google Business Profile setup">Google Business Profile setup</option>
+            <option value="OBM Solutions — Payment as quoted">Something else, as quoted</option>
+          </select>
+        </label>
 
-      <label class="field">
-        <span>Email for your receipt</span>
-        <input type="email" name="email_address" maxlength="100" autocomplete="email" required="required">
-      </label>
+        <label class="field">
+          <span class="lbl">Amount</span>
+          <span class="amountwrap">
+            <span class="zar" aria-hidden="true">R</span>
+            <input type="number" name="amount" min="5" step="0.01" inputmode="decimal" placeholder="1400.00" required="required" onInput="{{ onAmount }}" />
+          </span>
+          <small>Use the exact figure on your quote or invoice. Minimum R5.00.</small>
+        </label>
+      </div>
 
-      <label class="field">
-        <span>Reference <span style="font-weight:400;color:color-mix(in srgb, var(--color-text) 55%, transparent)">(optional)</span></span>
-        <input type="text" name="custom_str1" maxlength="200" placeholder="Quote or invoice number, if you have one">
-      </label>
+      <div class="step">
+        <span class="step-no">02</span>
+        <h2 class="step-title">Your details</h2>
+
+        <label class="field">
+          <span class="lbl">Name or business</span>
+          <input type="text" name="name_first" maxlength="100" autocomplete="name" required="required" />
+        </label>
+
+        <label class="field">
+          <span class="lbl">Email for your receipt</span>
+          <input type="email" name="email_address" maxlength="100" autocomplete="email" required="required" placeholder="you@business.co.za" />
+        </label>
+
+        <label class="field">
+          <span class="lbl">Reference <span class="opt">(optional)</span></span>
+          <input type="text" name="custom_str1" maxlength="200" placeholder="Quote or invoice number" />
+        </label>
+      </div>
+    </div>
+
+    <aside class="summary">
+      <span class="cap">Your payment</span>
+      <p class="amt {{ amountClass }}">{{ amountDisplay }}</p>
+      <p class="item">{{ itemDisplay }}</p>
+
+      <hr />
 
       <label class="agree">
-        <input type="checkbox" required="required">
+        <input type="checkbox" required="required" />
         <span>I agree to the <a href="terms.html">Terms &amp; Conditions</a>, including the refund, cancellation and delivery policies.</span>
       </label>
 
-      <button type="submit" class="btn btn-primary paybtn">Pay securely with Payfast →</button>
-    </form>
+      <button type="submit" class="paybtn">Pay securely with Payfast</button>
 
-    <div class="methods" aria-label="Accepted payment methods">
-      <span>Visa</span><span>Mastercard</span><span>Instant EFT</span><span>SnapScan</span><span>Zapper</span><span>MoreTyme</span>
-    </div>
+      <div class="methods" aria-label="Accepted payment methods">
+        <span>Visa</span><span>Mastercard</span><span>Instant EFT</span><span>SnapScan</span><span>Zapper</span>
+      </div>
 
-    <div class="secure">
-      <span aria-hidden="true" style="font-size:18px;line-height:22px">🔒</span>
-      <span>Your card details are entered on Payfast's secure, PCI-DSS-compliant checkout — OBM Solutions never sees or stores them. Payments are processed in South African Rand (ZAR). See our <a href="terms.html">Terms &amp; Conditions</a> and <a href="privacy.html">Privacy Policy</a>.</span>
-    </div>
-  </div>
+      <hr />
 
-  <p style="font-size:15px;line-height:28px;margin:28px 0 0;color:color-mix(in srgb, var(--color-text) 72%, transparent)">Prefer EFT or have a question about your quote? <a href="contact.html">Get in touch</a> or <a href="https://wa.me/27793108775">WhatsApp us</a> and we'll help.</p>
+      <div class="row"><span class="ic" aria-hidden="true">&#128274;</span><span>Card details are entered on Payfast's secure PCI-DSS checkout. We never see or store them.</span></div>
+      <div class="row"><span class="ic" aria-hidden="true">&#9679;</span><span>Charged in South African Rand by OBM Solutions, Cape Town.</span></div>
+      <div class="row"><span class="ic" aria-hidden="true">&#8617;</span><span>Full refund within 30 days if we can't deliver — see the <a href="terms.html">Terms</a>.</span></div>
+    </aside>
+
+  </form>
+
+  <p style="font-size:15px;line-height:28px;margin:34px 0 0;max-width:60ch;color:color-mix(in srgb, var(--color-text) 72%, transparent)">Prefer a direct EFT, or unsure which amount to pay? <a href="contact.html">Send us a message</a> or <a href="https://wa.me/27793108775">WhatsApp us</a> and we'll sort it out.</p>
 </section>
 
-<footer style="max-width:1200px;margin:0 auto;padding:56px clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;font-size:14px;line-height:28px;border-top:2px solid var(--color-divider)">
+<footer style="max-width:1120px;margin:0 auto;padding:56px clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;font-size:14px;line-height:28px;border-top:2px solid var(--color-divider)">
   <div>
     <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0">OBM Solutions</p>
     <p style="margin:8px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Website design for Cape Town small businesses.</p>
@@ -149,5 +233,35 @@
 </footer>
 
 </x-dc>
+
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { item: '', amount: '' };
+  renderVals() {
+    const raw = String(this.state.amount || '').replace(/[^0-9.]/g, '');
+    const val = parseFloat(raw);
+    const has = isFinite(val) && val > 0;
+    const pretty = has
+      ? 'R' + val.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')
+      : 'R\u2014';
+    const labels = {
+      'OBM Solutions \u2014 Starter website (deposit)': 'Starter website \u00b7 50% deposit',
+      'OBM Solutions \u2014 Growth website (deposit)': 'Growth website \u00b7 50% deposit',
+      'OBM Solutions \u2014 Premium website (deposit)': 'Premium website \u00b7 50% deposit',
+      'OBM Solutions \u2014 Final balance': 'Final balance before launch',
+      'OBM Solutions \u2014 Website care plan (monthly)': 'Website care plan \u00b7 monthly',
+      'OBM Solutions \u2014 Google Business Profile setup': 'Google Business Profile setup',
+      'OBM Solutions \u2014 Payment as quoted': 'Payment as quoted'
+    };
+    return {
+      amountDisplay: pretty,
+      amountClass: has ? '' : 'muted',
+      itemDisplay: labels[this.state.item] || 'Choose what you\u2019re paying for to see it here.',
+      onItem: (e) => this.setState({ item: e.target.value }),
+      onAmount: (e) => this.setState({ amount: e.target.value })
+    };
+  }
+}
+</script>
 </body>
 </html>

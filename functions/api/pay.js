@@ -20,8 +20,12 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   const origin = new URL(request.url).origin;
 
-  const merchant_id = env.PAYFAST_MERCHANT_ID;
-  const merchant_key = env.PAYFAST_MERCHANT_KEY;
+  // Live OBM Solutions Payfast credentials.
+  // These run server-side only — they are never sent to the visitor's browser.
+  // Environment variables (if set in Cloudflare Pages) always take priority,
+  // which is the tidier place to keep them long-term.
+  const merchant_id = env.PAYFAST_MERCHANT_ID || "13534520";
+  const merchant_key = env.PAYFAST_MERCHANT_KEY || "zzyvsai11dzej";
   const passphrase = env.PAYFAST_PASSPHRASE || "";
   const sandbox = String(env.PAYFAST_SANDBOX || "").toLowerCase() === "true";
 
