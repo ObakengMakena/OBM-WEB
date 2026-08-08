@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Payfast method test — OBM Solutions</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; max-width: 640px; margin: 0 auto; padding: 36px 20px; color: #201e1d; line-height: 1.55; }
+  h1 { font-size: 21px; margin-bottom: 6px; }
+  .note { background: #fff6f4; border-left: 4px solid #ec3013; padding: 13px 15px; font-size: 14px; margin: 14px 0 26px; }
+  .card { border: 2px solid #ddd; border-radius: 12px; padding: 20px; margin: 0 0 22px; }
+  .card h2 { font-size: 16px; margin: 0 0 4px; }
+  .card p.sub { font-size: 13.5px; color: #666; margin: 0 0 14px; }
+  label { font-size: 14px; display: block; margin: 0 0 6px; font-weight: 600; }
+  input[type=number] { padding: 9px 11px; font-size: 15px; border: 1px solid #bbb; border-radius: 6px; width: 140px; }
+  button { margin-top: 14px; padding: 12px 20px; font-size: 15px; font-weight: 600; background: #ec3013; color: #fff; border: 0; border-radius: 8px; cursor: pointer; }
+  code { background: #f2f2f2; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>Payfast method test</h1>
+<div class="note">
+  Two plain forms, no styling framework and no scripts. Try <strong>Method A first</strong>.<br><br>
+  Whichever one reaches the Payfast payment screen is the method this account supports — tell me which, and the real payment page will use it.<br><br>
+  Delete this file once payments work.
+</div>
+
+<div class="card">
+  <h2>Method A — Custom integration</h2>
+  <p class="sub">Merchant ID + Merchant Key. This is what the levymakhoha.com giving page uses.</p>
+  <form action="https://payment.payfast.io/eng/process" method="post">
+    <input type="hidden" name="merchant_id" value="13534520">
+    <input type="hidden" name="merchant_key" value="zzyvsai11dzej">
+    <input type="hidden" name="return_url" value="https://obm-solutions.co.za/payment-success.html">
+    <input type="hidden" name="cancel_url" value="https://obm-solutions.co.za/payment-cancelled.html">
+    <input type="hidden" name="item_name" value="OBM Solutions test payment">
+    <label for="a1">Amount (ZAR)</label>
+    <input id="a1" type="number" name="amount" step="0.01" min="5.00" value="5.00">
+    <br><button type="submit">Test Method A →</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Method B — Pay Now button</h2>
+  <p class="sub">cmd=_paynow + receiver. This is the dashboard-generated button that returned the 500.</p>
+  <form action="https://payment.payfast.io/eng/process" method="post">
+    <input type="hidden" name="cmd" value="_paynow">
+    <input type="hidden" name="receiver" value="13534520">
+    <input type="hidden" name="return_url" value="https://obm-solutions.co.za/payment-success.html">
+    <input type="hidden" name="cancel_url" value="https://obm-solutions.co.za/payment-cancelled.html">
+    <input type="hidden" name="item_name" value="OBM Solutions test payment">
+    <label for="a2">Amount (ZAR)</label>
+    <input id="a2" type="number" name="amount" step="0.01" min="5.00" value="5.00">
+    <br><button type="submit">Test Method B →</button>
+  </form>
+</div>
+
+<p style="font-size:13.5px;color:#666">Posting to <code>payment.payfast.io/eng/process</code> &middot; Merchant ID <code>13534520</code></p>
+<p style="font-size:14px"><a href="/payments.html">← Back to the payment page</a></p>
+
+</body>
+</html>

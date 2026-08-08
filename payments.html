@@ -135,11 +135,12 @@
 <section style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 90px">
   <form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post" class="paygrid">
 
-    <!-- Payfast "Pay Now" fields, from the button generated on the Payfast
-         account. Only the Merchant ID is used — no secret key and no
-         signature — so this is safe to sit in a public page. -->
-    <input type="hidden" name="cmd" value="_paynow" />
-    <input type="hidden" name="receiver" value="13534520" />
+    <!-- Payfast custom integration — the same method as the levymakhoha.com
+         giving page. Merchant ID + Merchant Key identify the receiving
+         account. No signature is sent, which is correct as long as NO
+         passphrase is set on the Payfast account (Settings → Security). -->
+    <input type="hidden" name="merchant_id" value="13534520" />
+    <input type="hidden" name="merchant_key" value="zzyvsai11dzej" />
     <input type="hidden" name="return_url" value="https://obm-solutions.co.za/payment-success.html" />
     <input type="hidden" name="cancel_url" value="https://obm-solutions.co.za/payment-cancelled.html" />
 
