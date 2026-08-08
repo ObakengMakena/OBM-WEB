@@ -133,7 +133,15 @@
 </section>
 
 <section style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 90px">
-  <form action="/api/pay" method="post" class="paygrid">
+  <form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post" class="paygrid">
+
+    <!-- Payfast "Pay Now" fields, from the button generated on the Payfast
+         account. Only the Merchant ID is used — no secret key and no
+         signature — so this is safe to sit in a public page. -->
+    <input type="hidden" name="cmd" value="_paynow" />
+    <input type="hidden" name="receiver" value="13534520" />
+    <input type="hidden" name="return_url" value="https://obm-solutions.co.za/payment-success.html" />
+    <input type="hidden" name="cancel_url" value="https://obm-solutions.co.za/payment-cancelled.html" />
 
     <div>
       <div class="step first">
@@ -158,7 +166,7 @@
           <span class="lbl">Amount</span>
           <span class="amountwrap">
             <span class="zar" aria-hidden="true">R</span>
-            <input type="number" name="amount" min="5" step="0.01" inputmode="decimal" placeholder="1400.00" required="required" onInput="{{ onAmount }}" />
+            <input id="PayFastAmount" type="number" name="amount" min="5.00" step=".01" inputmode="decimal" placeholder="1400.00" required="required" onInput="{{ onAmount }}" />
           </span>
           <small>Use the exact figure on your quote or invoice. Minimum R5.00.</small>
         </label>

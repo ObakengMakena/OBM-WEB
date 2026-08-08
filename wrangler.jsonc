@@ -1,21 +1,12 @@
 {
-  // OBM Solutions — Worker + static assets.
-  //
-  // Without this file, wrangler auto-generates a config with NO "main" entry
-  // point, so _worker.js gets treated as a public file instead of server code
-  // and /api/pay never exists. "main" below is what makes the payment
-  // endpoint actually run.
+  // OBM Solutions — static site deployed as a Worker with static assets.
+  // No "main" entry point: there is no server-side code any more, because
+  // payments go straight to Payfast's hosted checkout from the payment form.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "obm-solutions",
-  "main": "_worker.js",
   "compatibility_date": "2026-08-08",
-  "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    // The whole site is served from the repo root.
     "directory": ".",
-    // Gives the Worker env.ASSETS so it can serve the normal pages.
-    "binding": "ASSETS",
-    // Serve 404.html for unknown URLs.
     "not_found_handling": "404-page"
   },
   "observability": {
