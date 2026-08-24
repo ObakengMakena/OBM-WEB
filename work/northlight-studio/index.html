@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northlight Studio — Wedding &amp; Portrait Photography, Cape Town</title>
+<meta name="description" content="Cape Town wedding and portrait photography. Honest, unhurried photographs of the day as it actually happened.">
+<link rel="stylesheet" href="../_assets/fonts/fonts.css">
+<link rel="stylesheet" href="../_assets/fa/css/all.min.css">
+<style>
+  :root{
+    --ink:#141416; --paper:#EFEEEA; --mid:#8A8A85; --line:#D9D7D1; --cobalt:#2E4BDB;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .disp{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-0.035em;line-height:0.98}
+  .util{font-family:'Inter',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:11.5px}
+  a{color:inherit;text-decoration:none}
+  .lnk{color:var(--cobalt);text-underline-offset:3px;text-decoration:underline;text-decoration-thickness:1.5px}
+  /* photo wells: a tonal fallback sits under every image so nothing ever looks broken */
+  .well{position:relative;overflow:hidden;background:linear-gradient(155deg,#CFCBC2 0%,#8E8B84 45%,#37373A 100%)}
+  .well img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;background:var(--ink);color:var(--paper);
+       padding:.85rem 1.5rem;border-radius:2px;font-weight:600;font-size:.92rem;transition:background .18s ease}
+  .btn:hover{background:var(--cobalt)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  :focus-visible{outline:3px solid var(--cobalt);outline-offset:3px}
+  /* signature: the diary strip */
+  .diary{display:grid;grid-template-columns:repeat(6,1fr);border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink)}
+  .diary div{border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:.9rem .8rem}
+  .diary .m{font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-0.02em}
+  .diary .s{font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:.35rem;color:var(--mid)}
+  .diary .open .s{color:var(--cobalt);font-weight:600}
+  .diary .full{background:var(--ink);color:var(--paper)}
+  .diary .full .m{color:var(--paper)}
+  .diary .full .s{color:#9a9aa2}
+  @media (max-width:820px){.diary{grid-template-columns:repeat(3,1fr)}}
+  .ribbon{background:var(--ink);color:var(--paper);text-align:center;font-size:.78rem;padding:.5rem 1rem}
+  .ribbon a{color:#9fb0ff;font-weight:600}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<link rel="stylesheet" href="tailwind.css">
+</head>
+<body>
+
+<div class="ribbon">Concept design by OBM&nbsp;Solutions — a photography site. <a href="../../work.html">← Back to portfolio</a></div>
+
+<header class="sticky top-0 z-50 bg-[#EFEEEA]/92 backdrop-blur border-b border-[#D9D7D1]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="disp text-xl">Northlight<span style="color:var(--cobalt)">.</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#work" class="hover:text-[#2E4BDB]">Work</a>
+      <a href="#dates" class="hover:text-[#2E4BDB]">Dates</a>
+      <a href="#approach" class="hover:text-[#2E4BDB]">Approach</a>
+      <a href="#collections" class="hover:text-[#2E4BDB]">Collections</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#enquire" class="btn hidden sm:inline-flex text-sm py-2 px-4">Check your date</a>
+      <button id="mtoggle" class="md:hidden text-xl w-11 h-11 grid place-items-center" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+  <div id="mmenu" class="hidden md:hidden border-t border-[#D9D7D1] px-5 py-4 bg-[#EFEEEA]">
+    <nav class="flex flex-col text-sm">
+      <a href="#work" class="py-3 border-b border-[#E4E2DC]">Work</a>
+      <a href="#dates" class="py-3 border-b border-[#E4E2DC]">Dates</a>
+      <a href="#approach" class="py-3 border-b border-[#E4E2DC]">Approach</a>
+      <a href="#collections" class="py-3 border-b border-[#E4E2DC]">Collections</a>
+      <a href="#enquire" class="btn justify-center mt-4">Check your date</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO: the photograph is the thesis -->
+<section class="relative">
+  <div class="well h-[78vh] min-h-[440px]">
+    <img src="https://picsum.photos/seed/northlight-hero/1800/1100" alt="Couple photographed at golden hour" loading="eager">
+    <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(20,20,22,.30) 0%,rgba(20,20,22,.12) 40%,rgba(20,20,22,.82) 100%)"></div>
+  </div>
+  <div class="absolute inset-x-0 bottom-0">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 pb-10 sm:pb-14 text-[#EFEEEA]">
+      <p class="util mb-4" style="color:#C9CBD6">Cape Town · weddings &amp; portraits</p>
+      <h1 class="disp text-[2.6rem] sm:text-6xl md:text-7xl max-w-3xl">Photographs that still<br>feel like the day.</h1>
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="#work" class="btn" style="background:var(--paper);color:var(--ink)">See the work</a>
+        <a href="#dates" class="btn btn-ghost" style="border-color:#EFEEEA;color:#EFEEEA">2026 dates</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK: asymmetric editorial grid, not a uniform tile wall -->
+<section id="work" class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-24 scroll-mt-20">
+  <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+    <div>
+      <p class="util" style="color:var(--mid)">Selected work</p>
+      <h2 class="disp text-3xl sm:text-5xl mt-3">Recent days</h2>
+    </div>
+    <p class="text-sm max-w-xs" style="color:var(--mid)">Full galleries on request — most couples receive 500–700 edited photographs.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <figure class="md:col-span-2">
+      <div class="well aspect-[16/10]"><img src="https://picsum.photos/seed/northlight-01/1200/750" alt="Wedding ceremony, Constantia" loading="lazy"></div>
+      <figcaption class="flex justify-between text-xs mt-2" style="color:var(--mid)"><span>Thandi &amp; Marco</span><span>Constantia · March</span></figcaption>
+    </figure>
+    <figure>
+      <div class="well aspect-[4/5]"><img src="https://picsum.photos/seed/northlight-02/700/875" alt="Portrait session, Sea Point" loading="lazy"></div>
+      <figcaption class="flex justify-between text-xs mt-2" style="color:var(--mid)"><span>Ayanda</span><span>Sea Point</span></figcaption>
+    </figure>
+    <figure>
+      <div class="well aspect-[4/5]"><img src="https://picsum.photos/seed/northlight-03/700/875" alt="Couple on the beach at sunset" loading="lazy"></div>
+      <figcaption class="flex justify-between text-xs mt-2" style="color:var(--mid)"><span>Sarah &amp; Nick</span><span>Noordhoek</span></figcaption>
+    </figure>
+    <figure class="md:col-span-2">
+      <div class="well aspect-[16/10]"><img src="https://picsum.photos/seed/northlight-04/1200/750" alt="Reception dancing" loading="lazy"></div>
+      <figcaption class="flex justify-between text-xs mt-2" style="color:var(--mid)"><span>Lerato &amp; Sipho</span><span>Franschhoek · November</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- SIGNATURE: the diary. A photographer sells dates, so the dates are the product. -->
+<section id="dates" class="border-y border-[#D9D7D1] scroll-mt-20" style="background:#E7E5DF">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+      <div>
+        <p class="util" style="color:var(--mid)">The diary</p>
+        <h2 class="disp text-3xl sm:text-5xl mt-3">2026 availability</h2>
+      </div>
+      <p class="text-sm max-w-sm" style="color:var(--mid)">One wedding a weekend, so the day never feels rushed. Dates go roughly nine months ahead.</p>
+    </div>
+    <div class="diary">
+      <div class="full"><p class="m">Jan</p><p class="s">Booked</p></div>
+      <div class="full"><p class="m">Feb</p><p class="s">Booked</p></div>
+      <div class="open"><p class="m">Mar</p><p class="s">2 dates</p></div>
+      <div class="full"><p class="m">Apr</p><p class="s">Booked</p></div>
+      <div class="open"><p class="m">May</p><p class="s">4 dates</p></div>
+      <div class="open"><p class="m">Jun</p><p class="s">Open</p></div>
+      <div class="open"><p class="m">Jul</p><p class="s">Open</p></div>
+      <div class="open"><p class="m">Aug</p><p class="s">3 dates</p></div>
+      <div class="full"><p class="m">Sep</p><p class="s">Booked</p></div>
+      <div class="open"><p class="m">Oct</p><p class="s">1 date</p></div>
+      <div class="full"><p class="m">Nov</p><p class="s">Booked</p></div>
+      <div class="open"><p class="m">Dec</p><p class="s">2 dates</p></div>
+    </div>
+    <p class="text-sm mt-6" style="color:var(--mid)">Your date not shown? <a href="#enquire" class="lnk">Ask anyway</a> — cancellations happen.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach" class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-24 scroll-mt-20">
+  <div class="grid md:grid-cols-3 gap-10 md:gap-14">
+    <div class="md:col-span-1">
+      <p class="util" style="color:var(--mid)">Approach</p>
+      <h2 class="disp text-3xl sm:text-4xl mt-3">Unhurried, and mostly out of the way.</h2>
+    </div>
+    <div class="md:col-span-2 grid sm:grid-cols-2 gap-8">
+      <div>
+        <h3 class="disp text-lg">No shot list theatre</h3>
+        <p class="text-sm mt-2" style="color:#5C5C58">We'll do the family groups properly and quickly. The rest of the day I stay out of it and photograph what actually happens.</p>
+      </div>
+      <div>
+        <h3 class="disp text-lg">You get everything</h3>
+        <p class="text-sm mt-2" style="color:#5C5C58">Every usable frame, edited and delivered in full resolution. No paying extra for your own photographs.</p>
+      </div>
+      <div>
+        <h3 class="disp text-lg">Six weeks, not six months</h3>
+        <p class="text-sm mt-2" style="color:#5C5C58">Your gallery lands within six weeks. A preview set arrives within three days, while it still feels close.</p>
+      </div>
+      <div>
+        <h3 class="disp text-lg">Printed, not just posted</h3>
+        <p class="text-sm mt-2" style="color:#5C5C58">Every collection includes a fine-art album. Screens change; a book on a shelf does not.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="collections" class="scroll-mt-20" style="background:var(--ink);color:var(--paper)">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+    <p class="util" style="color:#9a9aa2">Collections</p>
+    <h2 class="disp text-3xl sm:text-5xl mt-3 mb-12">What it costs</h2>
+    <div class="grid md:grid-cols-3 gap-px" style="background:#2C2C30">
+      <div style="background:var(--ink)" class="p-7">
+        <h3 class="disp text-xl">Portrait</h3>
+        <p class="disp text-3xl mt-3" style="color:var(--cobalt)">R3 500</p>
+        <p class="text-sm mt-4" style="color:#B9B9B4">Ninety minutes, one location, 60+ edited photographs and a 20-page album.</p>
+      </div>
+      <div style="background:var(--ink)" class="p-7 relative">
+        <span class="util absolute top-7 right-7" style="color:var(--cobalt)">Most booked</span>
+        <h3 class="disp text-xl">The day</h3>
+        <p class="disp text-3xl mt-3" style="color:var(--cobalt)">R18 500</p>
+        <p class="text-sm mt-4" style="color:#B9B9B4">Ten hours, second photographer, 500+ edited photographs, fine-art album and an engagement session.</p>
+      </div>
+      <div style="background:var(--ink)" class="p-7">
+        <h3 class="disp text-xl">Elopement</h3>
+        <p class="disp text-3xl mt-3" style="color:var(--cobalt)">R9 500</p>
+        <p class="text-sm mt-4" style="color:#B9B9B4">Four hours for small weddings, 200+ edited photographs and a 30-page album.</p>
+      </div>
+    </div>
+    <p class="text-sm mt-8" style="color:#B9B9B4">Travel beyond the Peninsula quoted honestly, at cost. A 25% deposit holds your date.</p>
+  </div>
+</section>
+
+<!-- ENQUIRE -->
+<section id="enquire" class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-24 scroll-mt-20">
+  <div class="grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <p class="util" style="color:var(--mid)">Enquiries</p>
+      <h2 class="disp text-3xl sm:text-5xl mt-3">Tell me your date.</h2>
+      <p class="text-sm mt-5 max-w-md" style="color:#5C5C58">Send the date and where you're getting married. You'll get a straight answer on availability and a full price list the same day — no forms, no drip emails.</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="#" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp the studio</a>
+        <a href="#" class="btn btn-ghost"><i class="fas fa-envelope"></i> Email instead</a>
+      </div>
+      <p class="text-xs mt-6" style="color:var(--mid)">Usually replies within a few hours · Cape Town &amp; the Winelands</p>
+    </div>
+    <div class="well aspect-[4/3]"><img src="https://picsum.photos/seed/northlight-05/900/675" alt="Photographer at work" loading="lazy"></div>
+  </div>
+</section>
+
+<footer class="border-t border-[#D9D7D1]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-3 gap-8 text-sm">
+    <div>
+      <p class="disp text-lg">Northlight<span style="color:var(--cobalt)">.</span></p>
+      <p class="mt-2" style="color:var(--mid)">Wedding and portrait photography,<br>Cape Town and the Winelands.</p>
+    </div>
+    <div style="color:var(--mid)">
+      <p class="util" style="color:var(--ink)">Contact</p>
+      <p class="mt-2">hello@northlight.example</p>
+      <p>+27 21 000 0000</p>
+      <p class="mt-2"><i class="fab fa-instagram"></i> @northlightstudio</p>
+    </div>
+    <div style="color:var(--mid)">
+      <p class="util" style="color:var(--ink)">Studio</p>
+      <p class="mt-2">By appointment<br>Woodstock, Cape Town</p>
+    </div>
+  </div>
+  <div class="border-t border-[#D9D7D1] py-5 text-center text-xs" style="color:var(--mid)">
+    © 2026 Northlight Studio · Site by <a href="../../index.html" class="lnk">OBM Solutions</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('mtoggle'), m=document.getElementById('mmenu'), i=t.querySelector('i');
+  function close(){m.classList.add('hidden');i.className='fas fa-bars';t.setAttribute('aria-expanded','false');}
+  t.addEventListener('click',function(){
+    var open=m.classList.toggle('hidden')===false;
+    i.className=open?'fas fa-xmark':'fas fa-bars';
+    t.setAttribute('aria-expanded',String(open));
+  });
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+})();
+</script>
+</body>
+</html>

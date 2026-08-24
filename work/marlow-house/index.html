@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marlow House — Boutique Guest House, Cape Town</title>
+<meta name="description" content="A six-room guest house under the mountain in Cape Town. Book direct and pay less than the booking sites.">
+<link rel="stylesheet" href="../_assets/fonts/fonts.css">
+<link rel="stylesheet" href="../_assets/fa/css/all.min.css">
+<style>
+  :root{
+    --night:#14212A; --chalk:#F3F1EC; --sand:#E0D5C3; --sea:#2E6E63; --ink:#0E1A21; --mute:#6E7B82;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--chalk);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .disp{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:-0.005em;line-height:1.05}
+  .util{font-family:'Inter',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;font-size:11px}
+  a{color:inherit;text-decoration:none}
+  .well{position:relative;overflow:hidden;background:linear-gradient(160deg,#CFC7B6 0%,#8D9A97 48%,#22323B 100%)}
+  .well img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;background:var(--sea);color:#fff;
+       padding:.85rem 1.5rem;border-radius:999px;font-weight:600;font-size:.92rem;transition:background .18s ease}
+  .btn:hover{background:#245A51}
+  .btn-ghost{background:transparent;color:var(--night);border:1.5px solid var(--night)}
+  .btn-ghost:hover{background:var(--night);color:var(--chalk)}
+  :focus-visible{outline:3px solid var(--sea);outline-offset:3px}
+  .rule{height:1px;background:#DAD5CA}
+  /* signature: the direct-booking ledger */
+  .ledger{border:1.5px solid var(--night);background:#fff}
+  .ledger .row{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1rem;padding:.95rem 1.25rem;border-bottom:1px solid #E4DFD4;align-items:baseline}
+  .ledger .row:last-child{border-bottom:0}
+  .ledger .head{background:var(--night);color:var(--chalk);border-bottom:0}
+  .ledger .head span{font-family:'Inter',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:10.5px}
+  .ledger .ota{color:var(--mute);text-decoration:line-through}
+  .ledger .dir{color:var(--sea);font-weight:700}
+  @media (max-width:620px){.ledger .row{grid-template-columns:1fr 1fr;row-gap:.2rem}.ledger .rm{grid-column:1/-1;font-weight:600}}
+  .ribbon{background:var(--night);color:var(--chalk);text-align:center;font-size:.78rem;padding:.5rem 1rem}
+  .ribbon a{color:#8FC7B9;font-weight:600}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="stylesheet" href="tailwind.css">
+</head>
+<body>
+
+<div class="ribbon">Concept design by OBM&nbsp;Solutions — a guest-house site. <a href="../../work.html">← Back to portfolio</a></div>
+
+<header class="sticky top-0 z-50 bg-[#F3F1EC]/93 backdrop-blur border-b border-[#DAD5CA]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="disp text-2xl">Marlow House</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#rooms" class="hover:text-[#2E6E63]">Rooms</a>
+      <a href="#house" class="hover:text-[#2E6E63]">The house</a>
+      <a href="#rates" class="hover:text-[#2E6E63]">Rates</a>
+      <a href="#find" class="hover:text-[#2E6E63]">Find us</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#rates" class="btn hidden sm:inline-flex text-sm py-2 px-4">Check availability</a>
+      <button id="mtoggle" class="md:hidden text-xl w-11 h-11 grid place-items-center" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+  <div id="mmenu" class="hidden md:hidden border-t border-[#DAD5CA] px-5 py-4 bg-[#F3F1EC]">
+    <nav class="flex flex-col text-sm">
+      <a href="#rooms" class="py-3 border-b border-[#E4DFD4]">Rooms</a>
+      <a href="#house" class="py-3 border-b border-[#E4DFD4]">The house</a>
+      <a href="#rates" class="py-3 border-b border-[#E4DFD4]">Rates</a>
+      <a href="#find" class="py-3 border-b border-[#E4DFD4]">Find us</a>
+      <a href="#rates" class="btn justify-center mt-4">Check availability</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO: split. The house has six rooms, and that scarcity is the pitch. -->
+<section class="max-w-6xl mx-auto px-5 sm:px-8 pt-12 sm:pt-20 pb-12">
+  <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+    <div>
+      <p class="util" style="color:var(--sea)">Gardens · Cape Town</p>
+      <h1 class="disp text-[3rem] sm:text-6xl md:text-7xl mt-5">Six rooms<br>under the<br>mountain.</h1>
+      <p class="text-base mt-6 max-w-md" style="color:#3E4A50">A small guest house on a quiet street ten minutes' walk from Kloof Street. Breakfast until eleven, no minimum stay, and the same person on the desk who will tell you where to eat.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#rates" class="btn">Check availability</a>
+        <a href="#rooms" class="btn btn-ghost">See the rooms</a>
+      </div>
+      <p class="text-xs mt-5" style="color:var(--mute)">Book direct — no booking fees, and always cheaper than the sites.</p>
+    </div>
+    <div class="well aspect-[4/5] md:aspect-[4/5]">
+      <img src="https://picsum.photos/seed/marlow-hero/900/1125" alt="The house at dusk" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms" class="max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-20 scroll-mt-20">
+  <div class="flex flex-wrap items-end justify-between gap-4 mb-9">
+    <div>
+      <p class="util" style="color:var(--sea)">The rooms</p>
+      <h2 class="disp text-4xl sm:text-5xl mt-3">All six of them</h2>
+    </div>
+    <p class="text-sm max-w-xs" style="color:var(--mute)">Every room has a mountain or garden view. None of them have a road view, because there isn't one.</p>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <article>
+      <div class="well aspect-[4/3] rounded-sm"><img src="https://picsum.photos/seed/marlow-r1/800/600" alt="Garden Room" loading="lazy"></div>
+      <div class="flex items-baseline justify-between mt-3">
+        <h3 class="disp text-2xl">Garden Room</h3>
+        <p class="text-sm font-semibold" style="color:var(--sea)">R1 450</p>
+      </div>
+      <p class="text-sm mt-1" style="color:var(--mute)">Ground floor · queen · opens onto the garden</p>
+    </article>
+    <article>
+      <div class="well aspect-[4/3] rounded-sm"><img src="https://picsum.photos/seed/marlow-r2/800/600" alt="Mountain Room" loading="lazy"></div>
+      <div class="flex items-baseline justify-between mt-3">
+        <h3 class="disp text-2xl">Mountain Room</h3>
+        <p class="text-sm font-semibold" style="color:var(--sea)">R1 750</p>
+      </div>
+      <p class="text-sm mt-1" style="color:var(--mute)">First floor · king · full Table Mountain view</p>
+    </article>
+    <article>
+      <div class="well aspect-[4/3] rounded-sm"><img src="https://picsum.photos/seed/marlow-r3/800/600" alt="Loft Room" loading="lazy"></div>
+      <div class="flex items-baseline justify-between mt-3">
+        <h3 class="disp text-2xl">The Loft</h3>
+        <p class="text-sm font-semibold" style="color:var(--sea)">R2 100</p>
+      </div>
+      <p class="text-sm mt-1" style="color:var(--mute)">Top floor · king · bath under the skylight</p>
+    </article>
+  </div>
+</section>
+
+<!-- THE HOUSE -->
+<section id="house" class="scroll-mt-20" style="background:var(--night);color:var(--chalk)">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="well aspect-[3/2] rounded-sm order-2 md:order-1"><img src="https://picsum.photos/seed/marlow-house/900/600" alt="Breakfast on the stoep" loading="lazy"></div>
+      <div class="order-1 md:order-2">
+        <p class="util" style="color:#8FC7B9">The house</p>
+        <h2 class="disp text-4xl sm:text-5xl mt-4">Breakfast runs<br>until eleven.</h2>
+        <p class="text-base mt-6" style="color:#B7C2C8">Because you are on holiday. Eggs cooked to order, bread from the bakery on the corner, and coffee that keeps coming.</p>
+        <ul class="mt-7 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm" style="color:#B7C2C8">
+          <li><i class="fas fa-wifi mr-2" style="color:#8FC7B9"></i>Uncapped fibre</li>
+          <li><i class="fas fa-square-parking mr-2" style="color:#8FC7B9"></i>Off-street parking</li>
+          <li><i class="fas fa-bolt mr-2" style="color:#8FC7B9"></i>Full backup power</li>
+          <li><i class="fas fa-mug-hot mr-2" style="color:#8FC7B9"></i>Honesty bar</li>
+          <li><i class="fas fa-person-swimming mr-2" style="color:#8FC7B9"></i>Plunge pool</li>
+          <li><i class="fas fa-dog mr-2" style="color:#8FC7B9"></i>Dogs by arrangement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE: the ledger. Guest houses lose 15–18% to the booking sites; showing it is the whole argument for booking direct. -->
+<section id="rates" class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-24 scroll-mt-20">
+  <div class="max-w-3xl">
+    <p class="util" style="color:var(--sea)">Rates</p>
+    <h2 class="disp text-4xl sm:text-5xl mt-3">What you'd pay elsewhere, and what you pay here.</h2>
+    <p class="text-sm mt-5" style="color:var(--mute)">The booking sites charge us commission and we have to build it into the price. Book direct and you simply don't pay it. Same room, same bed, same breakfast.</p>
+  </div>
+
+  <div class="ledger mt-10 max-w-3xl">
+    <div class="row head"><span>Room, per night</span><span>Booking sites</span><span>Direct</span></div>
+    <div class="row"><span class="rm">Garden Room</span><span class="ota">R1 720</span><span class="dir">R1 450</span></div>
+    <div class="row"><span class="rm">Mountain Room</span><span class="ota">R2 070</span><span class="dir">R1 750</span></div>
+    <div class="row"><span class="rm">The Loft</span><span class="ota">R2 480</span><span class="dir">R2 100</span></div>
+  </div>
+
+  <div class="grid sm:grid-cols-3 gap-6 mt-10 max-w-3xl text-sm">
+    <div><p class="util" style="color:var(--night)">Included</p><p class="mt-2" style="color:var(--mute)">Breakfast, parking, wifi, all taxes.</p></div>
+    <div><p class="util" style="color:var(--night)">Cancellation</p><p class="mt-2" style="color:var(--mute)">Free up to 48 hours before arrival.</p></div>
+    <div><p class="util" style="color:var(--night)">Minimum stay</p><p class="mt-2" style="color:var(--mute)">None, except over New Year.</p></div>
+  </div>
+
+  <div class="mt-10 flex flex-wrap gap-3">
+    <a href="#" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp to book</a>
+    <a href="#" class="btn btn-ghost"><i class="fas fa-envelope"></i> Email the house</a>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section id="find" class="border-t border-[#DAD5CA] scroll-mt-20" style="background:#EBE8E1">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <p class="util" style="color:var(--sea)">Find us</p>
+      <h2 class="disp text-4xl mt-3">Gardens, Cape Town</h2>
+      <p class="text-sm mt-5" style="color:var(--mute)">14 Example Road, Gardens, Cape Town 8001</p>
+      <ul class="text-sm mt-5 space-y-1" style="color:var(--mute)">
+        <li>10 minutes' walk to Kloof Street</li>
+        <li>20 minutes to the V&amp;A Waterfront</li>
+        <li>25 minutes from Cape Town International</li>
+      </ul>
+      <a href="#" class="btn btn-ghost mt-7"><i class="fas fa-location-dot"></i> Open in Maps</a>
+    </div>
+    <div class="well aspect-[3/2] rounded-sm"><img src="https://picsum.photos/seed/marlow-street/900/600" alt="The street outside the house" loading="lazy"></div>
+  </div>
+</section>
+
+<footer style="background:var(--night);color:var(--chalk)">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-3 gap-8 text-sm">
+    <div>
+      <p class="disp text-2xl">Marlow House</p>
+      <p class="mt-2" style="color:#8C99A0">Six rooms, one quiet street,<br>Gardens, Cape Town.</p>
+    </div>
+    <div style="color:#8C99A0">
+      <p class="util" style="color:var(--chalk)">Reservations</p>
+      <p class="mt-2">stay@marlowhouse.example</p>
+      <p>+27 21 000 0000</p>
+    </div>
+    <div style="color:#8C99A0">
+      <p class="util" style="color:var(--chalk)">Reception</p>
+      <p class="mt-2">Check-in 14:00 · Check-out 10:00<br>Breakfast 07:30 – 11:00</p>
+    </div>
+  </div>
+  <div class="border-t border-[#22323B] py-5 text-center text-xs" style="color:#8C99A0">
+    © 2026 Marlow House · Site by <a href="../../index.html" style="color:#8FC7B9;font-weight:600">OBM Solutions</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('mtoggle'), m=document.getElementById('mmenu'), i=t.querySelector('i');
+  function close(){m.classList.add('hidden');i.className='fas fa-bars';t.setAttribute('aria-expanded','false');}
+  t.addEventListener('click',function(){
+    var open=m.classList.toggle('hidden')===false;
+    i.className=open?'fas fa-xmark':'fas fa-bars';
+    t.setAttribute('aria-expanded',String(open));
+  });
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+})();
+</script>
+</body>
+</html>
